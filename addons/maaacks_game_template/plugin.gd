@@ -366,12 +366,10 @@ func _remove_tool_options() -> void:
 func _enable_plugin():
 	add_autoload_singleton("AppConfig", get_app_config_path())
 	add_autoload_singleton("SceneLoader", get_scene_loader_path())
-	add_autoload_singleton("ProjectUISoundController", get_plugin_path() + "base/nodes/autoloads/ui_sound_controller/project_ui_sound_controller.tscn")
 
 func _disable_plugin():
 	remove_autoload_singleton("AppConfig")
 	remove_autoload_singleton("SceneLoader")
-	remove_autoload_singleton("ProjectUISoundController")
 
 func _enter_tree() -> void:
 	_install_audio_busses()
