@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://bde0cbmryrv5s"]
+[gd_scene load_steps=11 format=3 uid="uid://bde0cbmryrv5s"]
 
 [ext_resource type="PackedScene" uid="uid://ch7wxnbttg3ik" path="res://addons/maaacks_game_template/examples/scenes/windows/pause_menu_layer.tscn" id="2_sgprk"]
+[ext_resource type="Script" uid="uid://bllg4gg7v1tsr" path="res://addons/maaacks_game_template/extras/scripts/level_manager.gd" id="4_vcq5n"]
 [ext_resource type="Script" uid="uid://bbymrin0cm704" path="res://addons/maaacks_game_template/extras/scripts/level_loader.gd" id="5_a40ke"]
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="5_fc8fx"]
 [ext_resource type="PackedScene" uid="uid://bve6co8x25of" path="res://addons/maaacks_game_template/examples/scenes/windows/game_won_window.tscn" id="6_a40ke"]
@@ -9,8 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://cns5v1sn14qht" path="res://addons/maaacks_game_template/examples/scenes/windows/level_won_window.tscn" id="8_up6yb"]
 [ext_resource type="Script" uid="uid://wjq7li836lwj" path="res://addons/maaacks_game_template/extras/scripts/scene_lister.gd" id="9_a40ke"]
 [ext_resource type="Script" uid="uid://tooek7mdq54x" path="res://addons/maaacks_game_template/examples/scenes/game_scene/configurable_sub_viewport.gd" id="9_u1dsg"]
-[ext_resource type="Script" uid="uid://cmqngqwso0uve" path="res://addons/maaacks_game_template/examples/scripts/level_and_state_manager.gd" id="11_a40ke"]
-[ext_resource type="Script" uid="uid://ca84daa8dggkl" path="res://addons/maaacks_game_template/examples/scenes/game_scene/game_timer.gd" id="12_sgprk"]
 
 [node name="GameUI" type="Control"]
 layout_mode = 3
@@ -31,7 +30,7 @@ level_container = NodePath("../ViewportContainer/ConfigurableSubViewport")
 level_loading_screen = NodePath("../LevelLoadingScreen")
 
 [node name="LevelManager" type="Node" parent="." node_paths=PackedStringArray("level_loader", "scene_lister")]
-script = ExtResource("11_a40ke")
+script = ExtResource("4_vcq5n")
 level_loader = NodePath("../LevelLoader")
 starting_level_path = "res://addons/maaacks_game_template/examples/scenes/game_scene/levels/level_1.tscn"
 scene_lister = NodePath("SceneLister")
@@ -63,6 +62,3 @@ audio_listener_enable_3d = true
 size = Vector2i(1280, 720)
 render_target_update_mode = 4
 script = ExtResource("9_u1dsg")
-
-[node name="GameTimer" type="Node" parent="."]
-script = ExtResource("12_sgprk")
