@@ -328,9 +328,6 @@ tree_root = SubResource("AnimationNodeStateMachine_vikuh")
 anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
-[node name="VersionContainer" parent="VersionMargin" index="0"]
-modulate = Color(1, 1, 1, 0)
-
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
@@ -343,7 +340,10 @@ modulate = Color(1, 1, 1, 0)
 [node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" index="0"]
 lock = true
 
-[node name="MouseFilter" type="Control" parent="." index="7"]
+[node name="VersionContainer" parent="VersionMargin" index="0"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="MouseFilter" type="Control" parent="." index="6"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
