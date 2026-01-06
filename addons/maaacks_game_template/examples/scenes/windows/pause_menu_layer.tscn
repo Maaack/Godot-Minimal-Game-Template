@@ -71,7 +71,6 @@ text = "Exit Game"
 [node name="RestartConfirmation" parent="." instance=ExtResource("5_7wt2f")]
 unique_name_in_owner = true
 visible = false
-update_content = true
 text = "Restart the game?"
 title = "Confirm Restart"
 
@@ -79,14 +78,12 @@ title = "Confirm Restart"
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(220, 0)
-update_content = true
 text = "Exit to the main menu?"
 title = "Confirm Exit"
 
 [node name="ExitConfirmation" parent="." instance=ExtResource("5_7wt2f")]
 unique_name_in_owner = true
 visible = false
-update_content = true
 text = "Exit the game?"
 title = "Confirm Exit"
 

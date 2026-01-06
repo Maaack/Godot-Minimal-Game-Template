@@ -11,8 +11,8 @@ offset_right = 210.0
 offset_bottom = 100.0
 script = ExtResource("2_oif0q")
 input_confirmation = 0
-update_content = true
 close_button_text = "Close"
+title = "Set Input"
 
 [node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" index="0"]
 text = "Set Input"
@@ -50,6 +50,7 @@ mouse_hidden_enabled = false
 
 [node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0"]
 focus_neighbor_top = NodePath("../../../BodyMargin/VBoxContainer/InputTextEdit")
+text = "Close"
 
 [node name="ConfirmButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1"]
 focus_neighbor_top = NodePath("../../../BodyMargin/VBoxContainer/InputTextEdit")
