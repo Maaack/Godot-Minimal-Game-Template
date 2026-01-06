@@ -112,6 +112,7 @@ func _show_next_image(animated : bool = true) -> void:
 	_wait_and_fade_out(texture_rect)
 
 func _ready() -> void:
+	AppSettings.set_from_config_and_window(get_window())
 	SceneLoader.load_scene(get_next_scene_path(), true)
 	_add_textures_to_container(images)
 	_transition_in()
