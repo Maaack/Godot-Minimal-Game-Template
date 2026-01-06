@@ -13,7 +13,6 @@ const CopyAndEdit = preload(PLUGIN_PATH + "installer/copy_and_edit_files.gd")
 const EXAMPLES_RELATIVE_PATH = "examples/"
 const MAIN_SCENE_RELATIVE_PATH = "scenes/opening/opening.tscn"
 const OVERRIDE_RELATIVE_PATH = "installer/override.cfg"
-const APP_CONFIG_RELATIVE_PATH = "base/nodes/autoloads/app_config/app_config.tscn"
 const SCENE_LOADER_RELATIVE_PATH = "base/nodes/autoloads/scene_loader/scene_loader.tscn"
 const THEMES_DIRECTORY_RELATIVE_PATH = "resources/themes"
 const WINDOW_OPEN_DELAY : float = 0.5
@@ -38,9 +37,6 @@ static func get_plugin_path() -> String:
 
 static func get_plugin_examples_path() -> String:
 	return get_plugin_path() + EXAMPLES_RELATIVE_PATH
-
-static func get_app_config_path() -> String:
-	return get_plugin_path() + APP_CONFIG_RELATIVE_PATH
 
 static func get_scene_loader_path() -> String:
 	return get_plugin_path() + SCENE_LOADER_RELATIVE_PATH
@@ -194,23 +190,6 @@ func _copy_override_file() -> void:
 	var override_path : String = get_plugin_path() + OVERRIDE_RELATIVE_PATH
 	_raw_copy_file_path(override_path, "res://"+override_path.get_file())
 
-func _update_app_config_paths(target_path : String) -> void:
-	var file_path : String = get_app_config_path()
-	var file_text : String = FileAccess.get_file_as_string(file_path)
-	var prefixes : Array[String] = [
-		"main_menu_scene_path",
-		"game_scene_path",
-		"ending_scene_path",
-		]
-	for prefix in prefixes:
-		prefix += " = \""
-		var target_string = prefix + get_plugin_examples_path()
-		var replacing_string = prefix + target_path
-		file_text = file_text.replace(target_string, replacing_string)
-	var file = FileAccess.open(file_path, FileAccess.WRITE)
-	file.store_string(file_text)
-	file.close()
-
 func _update_scene_loader_path(target_path : String) -> void:
 	var file_path : String = get_scene_loader_path()
 	var file_text : String = FileAccess.get_file_as_string(file_path)
@@ -231,11 +210,6 @@ func _add_translations() -> void:
 			translations.append(translation_path)
 	ProjectSettings.set_setting("internationalization/locale/translations", translations)
 
-func _is_app_config_path_updated(target_path) -> bool:
-	var file_text : String = FileAccess.get_file_as_string(get_app_config_path())
-	var target_string = "main_menu_scene_path = \"" + get_plugin_examples_path()
-	return !file_text.contains(target_string)
-
 func _is_scene_loader_path_updated(target_path) -> bool:
 	var file_text : String = FileAccess.get_file_as_string(get_scene_loader_path())
 	var target_string = "loading_screen_path = \"" + get_plugin_examples_path()
@@ -244,10 +218,9 @@ func _is_scene_loader_path_updated(target_path) -> bool:
 func are_autoload_paths_updated() -> bool:
 	var copy_path := get_copy_path()
 	if copy_path == get_plugin_examples_path(): return false
-	return _is_app_config_path_updated(copy_path) and _is_scene_loader_path_updated(copy_path)
+	return _is_scene_loader_path_updated(copy_path)
 
 func update_autoload_paths(target_path : String) -> void:
-	_update_app_config_paths(target_path)
 	_update_scene_loader_path(target_path)
 
 func _on_completed_copy_to_directory(target_path : String) -> void:
@@ -364,11 +337,9 @@ func _remove_tool_options() -> void:
 	_remove_update_plugin_tool_option()
 
 func _enable_plugin():
-	add_autoload_singleton("AppConfig", get_app_config_path())
 	add_autoload_singleton("SceneLoader", get_scene_loader_path())
 
 func _disable_plugin():
-	remove_autoload_singleton("AppConfig")
 	remove_autoload_singleton("SceneLoader")
 
 func _enter_tree() -> void:
