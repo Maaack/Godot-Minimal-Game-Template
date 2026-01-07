@@ -9,7 +9,7 @@ The `InputIconMapper` in `input_options_menu.tscn` is a generalized tool meant t
 > [!IMPORTANT]  
 > Save the state of the project, and close all open scenes and scripts.
 
-With the project open, select `Project > Tools > Run Maaack's Game Template Setup...`.
+With the project open, select `Project > Tools > Run Maaack's Minimal Game Template Setup...`.
 
 In the `Setup Wizard` window next to "Add Input Prompt Icons", click `Run`. 
 

@@ -3,7 +3,7 @@ class_name MaaacksGameTemplatePlugin
 extends EditorPlugin
 
 const PLUGIN_PATH = "res://addons/maaacks_game_template/"
-const PLUGIN_NAME = "Maaack's Game Template"
+const PLUGIN_NAME = "Maaack's Minimal Game Template"
 const PROJECT_SETTINGS_PATH = "maaacks_game_template/"
 
 const APIClient = preload(PLUGIN_PATH + "utilities/api_client.gd")
