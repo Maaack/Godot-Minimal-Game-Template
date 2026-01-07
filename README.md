@@ -3,7 +3,7 @@ For Godot 4.5 (4.3+ compatible)
 
 This template has a main menu, options menus, pause menu, credits, scene loader, extra tools, and an example game scene.  
 
-[Example on itch.io](https://maaack.itch.io/godot-game-template)  
+[Example on itch.io](https://maaack.itch.io/Godot-Minimal-Game-Template)  
 
 [Featured Games](#featured-games)  
 
@@ -109,7 +109,7 @@ When editing an existing project:
 ### GitHub
 
 
-1.  Download the latest release version from [GitHub](https://github.com/Maaack/Godot-Game-Template/releases/latest).  
+1.  Download the latest release version from [GitHub](https://github.com/Maaack/Godot-Minimal-Game-Template/releases/latest).  
 2.  Extract the contents of the archive.
 3.  Move the `addons/maaacks_game_template` folder into your project's `addons/` folder.  
 4.  Open/Reload the project.  

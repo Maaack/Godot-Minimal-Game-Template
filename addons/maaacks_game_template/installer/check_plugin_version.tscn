@@ -6,10 +6,10 @@
 [node name="CheckPluginVersion" type="Node"]
 script = ExtResource("1_aqelj")
 plugin_directory = "maaacks_game_template"
-plugin_github_url = "https://github.com/Maaack/Godot-Game-Template"
+plugin_github_url = "https://github.com/Maaack/Godot-Minimal-Game-Template"
 
 [node name="APIClient" parent="." instance=ExtResource("2_5myc0")]
-api_url = "https://api.github.com/repos/Maaack/Godot-Game-Template/releases"
+api_url = "https://api.github.com/repos/Maaack/Godot-Minimal-Game-Template/releases"
 request_method = 0
 
 [connection signal="request_failed" from="APIClient" to="." method="_on_api_client_request_failed"]

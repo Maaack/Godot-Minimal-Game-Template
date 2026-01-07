@@ -8,10 +8,10 @@
 [node name="UpdatePlugin" type="Node"]
 script = ExtResource("1_s6qpc")
 plugin_directory = "maaacks_game_template"
-plugin_github_url = "https://github.com/Maaack/Godot-Game-Template"
+plugin_github_url = "https://github.com/Maaack/Godot-Minimal-Game-Template"
 
 [node name="APIClient" parent="." instance=ExtResource("2_s6pdq")]
-api_url = "https://api.github.com/repos/Maaack/Godot-Game-Template/releases"
+api_url = "https://api.github.com/repos/Maaack/Godot-Minimal-Game-Template/releases"
 request_method = 0
 
 [node name="DownloadAndExtract" parent="." instance=ExtResource("3_s6pdq")]
