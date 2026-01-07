@@ -5,8 +5,7 @@
 [node name="OverlaidWindow" instance=ExtResource("1_sjjon")]
 custom_minimum_size = Vector2(420, 200)
 update_content = true
-text = "Progress is saved.
-Pressing Continue from the main menu will load at the last checkpoint."
+text = "Pressing Escape will open the Pause Menu."
 title = "Tutorial"
 title_font_size = 20
 
@@ -15,5 +14,4 @@ theme_override_font_sizes/font_size = 20
 text = "Tutorial"
 
 [node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin" index="0"]
-text = "Progress is saved.
-Pressing Continue from the main menu will load at the last checkpoint."
+text = "Pressing Escape will open the Pause Menu."
