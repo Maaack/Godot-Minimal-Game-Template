@@ -28,8 +28,6 @@ Alternatively, the developer can specify paths in the scenes that reference the 
 * `game_ui.tscn` (`level_manager.gd`)  
 * `end_credits.tscn`  
 
-Any file paths in these scenes left blank will default to the values in `AppConfig`.
-
 ## Internal Details 
 
 File paths, stored as strings, do not get automatically updated by the editor when their target moves. Paths are used when asynchronous loading of scenes (ie. using `SceneLoader`) is preferred, primarily for memory management.

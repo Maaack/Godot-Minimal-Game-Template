@@ -14,8 +14,6 @@ Some level loading scripts are provided with the examples. They load levels in o
 
 The `LevelManager` manages the progress through levels. It works with a level loader and can open menus when players win or lose. With a child `SceneLister`, it manages progression linearly. Otherwise, it will rely on the levels themselves providing the path to the next level. It can either be assigned a starting level path (for open world progression) or start from the first level in a scene lister (for linear level progression).
 
-The specific `level_and_state_manager.gd` in the scene inherits from `LevelManager` in order to sync progress with the player's `GameState`, as well.
-
 A `LevelLoader` loads levels, attaches them to a container, and manages a loading screen. It must be provided with a `level_container` in the scene. The example uses the `SubViewport`, but any leaf node (ie. node without children) in the scene should work. An optional `level_loading_screen` in the scene can be attached to show progress of loading levels.
 
 ### Linear Level Progress
@@ -41,11 +39,6 @@ In that case, the following nodes can be safely removed:
 The single level scene can then be added directly to the `SubViewport`, another container, or the root node.  
 
 To manage the win and lose screens and transitioning to other scenes, add a `Node` and attach the `win_lose_manager.gd` script. Inspect the node to attach the win / lose screens and paths. The `game_won()` or `game_lost()` will then need to be called when gameplay conditions are met.  
-
-## Background Music
-`BackgroundMusicPlayer`'s are `AudioStreamPlayer`'s with `autoplay` set to `true` and `audio_bus` set to "Music". These will automatically be recognized by the `ProjectMusicController` with the default settings, and allow for blending between tracks.
-
-A `BackgroundMusicPlayer` can be added to the main game scene, but if using levels, the level scenes are typically a better place for them, as that allows for tracks to vary by level.  
 
 ## SubViewports
 The game example has the levels loaded into a `SubViewport` node, contained within a `SubViewportContainer`. This has a couple of advantages.

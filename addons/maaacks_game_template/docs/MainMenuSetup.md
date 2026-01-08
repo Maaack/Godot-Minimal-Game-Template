@@ -18,7 +18,7 @@ When adding a 3D background to the menu, it is recommended to use a `SubViewport
 
 ## Level Select
 
-A basic level select scene is available to add to the menu. In `main_menu_with_animations.tscn`, click the root `MainMenu` mode and set `Level Select Packed Scene` to `level_select_menu.tscn`. The button will appear on the main menu when the player has reached the second level.  
+A basic level select scene is available to add to the menu. A button can be added to the menu button container that calls `_open_sub_menu()` and passes in the packed scene of the level select menu. Refer to the options and credits button code in `main_menu.gd` for examples.
 
 Levels can be added to the menu by inspecting the `SceneLister` and either selecting a directory to automatically read scene files from, or populating the files array manually.
 

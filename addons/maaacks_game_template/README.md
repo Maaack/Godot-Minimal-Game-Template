@@ -1,4 +1,4 @@
-# Godot Game Template
+# Godot Minimal Game Template
 For Godot 4.5 (4.3+ compatible)
 
 This template has a main menu, options menus, pause menu, credits, scene loader, extra tools, and an example game scene.  
@@ -43,8 +43,6 @@ The `base/` folder holds the core components of the menus application.
 -   Extensible Overlay Menus
 -   Keyboard/Mouse Support
 -   Gamepad Support
--   UI Sound Controller
--   Background Music Controller
 
 ### Extras
 
@@ -68,17 +66,23 @@ The `examples/` folder contains an example project using inherited scenes from t
 -   Main Menu w/ Animations
 -   Opening w/ Godot Logo
 
-### Minimal
+### Full
 
-Users that want a minimal set of features can try [Maaack's Menus Template](https://github.com/Maaack/Godot-Menus-Template) or other options from the [plugin suite](/addons/maaacks_game_template/docs/PluginSuite.md).  
+Users that want a more complete set of features can try [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) or other options from the [plugin suite](/addons/maaacks_game_template/docs/PluginSuite.md).  
 
+The full Game Template includes:
+-   Game State Management (Basic Saving/Loading)
+-   UI Sound Controller (Button SFX)
+-   Background Music Controller
+-   Credits Reader (Markdown File Parser)
+-   Globals Config Autoload
 
 ## Installation
 
 ### Godot Asset Library
 This package is available as both a template and a plugin, meaning it can be used to start a new project, or added to an existing project. 
 
-![Package Icon](/addons/maaacks_game_template/media/game-icon-black-transparent-256x256.png)  
+![Package Icon](/addons/maaacks_game_template/media/mini-game-icon-black-transparent-256x256.png)  
 
 When starting a new project:
 
@@ -141,15 +145,12 @@ These instructions assume starting with just the contents of `addons/`. This wil
 [Loading Scenes](/addons/maaacks_game_template/docs/LoadingScenes.md)  
 [Input Icon Mapping](/addons/maaacks_game_template/docs/InputIconMapping.md)  
 [Joypad Inputs](/addons/maaacks_game_template/docs/JoypadInputs.md)  
-[Blending Music](/addons/maaacks_game_template/docs/BlendingMusic.md)  
 [Add Custom Options](/addons/maaacks_game_template/docs/AddingCustomOptions.md)  
-[Game Saving](/addons/maaacks_game_template/docs/GameSaving.md)  
 [How Parts Work](/addons/maaacks_game_template/docs/HowPartsWork.md)  
 [Moving Files](/addons/maaacks_game_template/docs/MovingFiles.md)  
 [Uploading to itch.io](/addons/maaacks_game_template/docs/UploadingToItchIo.md)  
 [Build and Publish Your Game Using CICD](/addons/maaacks_game_template/docs/BuildAndPublish.md)  
 [Automatic Updating](/addons/maaacks_game_template/docs/AutomaticUpdating.md)  
-[Exhibiting Your Game](/addons/maaacks_game_template/docs/Exhibiting.md)  
 
 ---
 
