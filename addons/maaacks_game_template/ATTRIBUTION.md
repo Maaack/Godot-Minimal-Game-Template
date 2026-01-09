@@ -1,7 +1,7 @@
 # Attribution
 ## Collaborators
 
-### Godot Game Template
+### Godot Minimal Game Template
 ![Maaack Plugin Icon](/addons/maaacks_game_template/assets/plugin_logo/logo.png)  
 Author: [Marek Belski and contributors](https://github.com/Maaack/Godot-Minimal-Game-Template/graphs/contributors)  
 Source: [github: Godot-Minimal-Game-Template](https://github.com/Maaack/Godot-Minimal-Game-Template)  
