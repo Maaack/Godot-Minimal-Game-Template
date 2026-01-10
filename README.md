@@ -36,7 +36,6 @@ The `base/` folder holds the core components of the menus application.
 -   Options Menus
 -   Pause Menu
 -   Credits
--   Loading Screen
 -   Opening Scene
 -   Persistent Settings
 -   Simple Config Interface
@@ -71,6 +70,7 @@ The `examples/` folder contains an example project using inherited scenes from t
 Users that want a more complete set of features can try [Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template) or other options from the [plugin suite](/addons/maaacks_game_template/docs/PluginSuite.md).  
 
 The full Game Template includes:
+-   Loading Screen
 -   Game State Management (Basic Saving/Loading)
 -   UI Sound Controller (Button SFX)
 -   Background Music Controller
@@ -142,7 +142,6 @@ These instructions assume starting with just the contents of `addons/`. This wil
 
 [Main Menu Setup](/addons/maaacks_game_template/docs/MainMenuSetup.md)  
 [Game Scene Setup](/addons/maaacks_game_template/docs/GameSceneSetup.md)  
-[Loading Scenes](/addons/maaacks_game_template/docs/LoadingScenes.md)  
 [Input Icon Mapping](/addons/maaacks_game_template/docs/InputIconMapping.md)  
 [Joypad Inputs](/addons/maaacks_game_template/docs/JoypadInputs.md)  
 [Add Custom Options](/addons/maaacks_game_template/docs/AddingCustomOptions.md)  

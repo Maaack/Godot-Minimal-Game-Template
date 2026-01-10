@@ -20,6 +20,9 @@ extends Control
 ## If true, show a loading screen if the next scene is not yet ready.
 @export var show_loading_screen : bool = false
 
+## If Maaack's Scene Loader is installed, then it will be used to change scenes.
+@onready var scene_loader_node = get_tree().root.get_node_or_null(^"SceneLoader")
+
 var tween : Tween
 var next_image_index : int = 0
 
@@ -27,16 +30,19 @@ func get_next_scene_path() -> String:
 	return next_scene_path
 
 func _on_scene_loaded() -> void:
-		SceneLoader.change_scene_to_resource()
+	scene_loader_node.change_scene_to_resource()
 
 func _load_next_scene() -> void:
-	var status = SceneLoader.get_status()
-	if status == ResourceLoader.THREAD_LOAD_LOADED:
-		_on_scene_loaded()
-	elif show_loading_screen:
-		SceneLoader.change_scene_to_loading_screen()
-	elif not SceneLoader.scene_loaded.is_connected(_on_scene_loaded):
-		SceneLoader.scene_loaded.connect(_on_scene_loaded, CONNECT_ONE_SHOT)
+	if scene_loader_node:
+		var status = scene_loader_node.get_status()
+		if status == ResourceLoader.THREAD_LOAD_LOADED:
+			_on_scene_loaded()
+		elif show_loading_screen:
+			scene_loader_node.change_scene_to_loading_screen()
+		elif not scene_loader_node.scene_loaded.is_connected(_on_scene_loaded):
+			scene_loader_node.scene_loaded.connect(_on_scene_loaded, CONNECT_ONE_SHOT)
+	else:
+		get_tree().change_scene_to_file(get_next_scene_path())
 
 func _add_textures_to_container(textures : Array[Texture2D]) -> void:
 	for texture in textures:
@@ -113,6 +119,7 @@ func _show_next_image(animated : bool = true) -> void:
 
 func _ready() -> void:
 	AppSettings.set_from_config_and_window(get_window())
-	SceneLoader.load_scene(get_next_scene_path(), true)
+	if scene_loader_node:
+		scene_loader_node.load_scene(get_next_scene_path(), true)
 	_add_textures_to_container(images)
 	_transition_in()
