@@ -15,10 +15,6 @@ run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.5")
 config/icon="res://icon.png"
 
-[autoload]
-
-SceneLoader="*res://addons/maaacks_game_template/base/nodes/autoloads/scene_loader/scene_loader.tscn"
-
 [display]
 
 window/size/viewport_width=1280

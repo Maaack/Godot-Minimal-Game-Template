@@ -9,6 +9,9 @@ extends Node
 ## Optional screen to be shown after the game is lost.
 @export var game_lost_scene : PackedScene
 
+## If Maaack's Scene Loader is installed, then it will be used to change scenes.
+@onready var scene_loader_node = get_tree().root.get_node_or_null(^"SceneLoader")
+
 var has_lost_game : bool = false
 var has_won_game : bool = false
 
@@ -20,16 +23,22 @@ func get_main_menu_scene_path() -> String:
 	return main_menu_scene_path
 
 func _load_main_menu() -> void:
-	SceneLoader.load_scene(get_main_menu_scene_path())
+	if scene_loader_node:
+		scene_loader_node.load_scene(get_main_menu_scene_path())
+	else:
+		get_tree().change_scene_to_file(get_main_menu_scene_path())
 
 func get_ending_scene_path() -> String:
 	return ending_scene_path
 
 func _load_ending() -> void:
-	if get_ending_scene_path().is_empty():
-		_load_main_menu()
+	if not get_ending_scene_path().is_empty():
+		if scene_loader_node:
+			scene_loader_node.load_scene(get_ending_scene_path())
+		else:
+			get_tree().change_scene_to_file(get_ending_scene_path())
 	else:
-		SceneLoader.load_scene(get_ending_scene_path())
+		_load_main_menu()
 
 func _load_lose_screen_or_reload() -> void:
 	if game_lost_scene:
@@ -41,7 +50,7 @@ func _load_lose_screen_or_reload() -> void:
 		_reload_level()
 
 func _reload_level() -> void:
-	SceneLoader.reload_current_scene()
+	get_tree().reload_current_scene()
 
 func _load_win_screen_or_ending() -> void:
 	if game_won_scene:
