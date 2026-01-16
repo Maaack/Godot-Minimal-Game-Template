@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b8808yj7a0ghj"]
+[gd_scene format=3 uid="uid://cukfpfjy3827p"]
 
 [node name="PlayOpeningConfirmationDialog" type="ConfirmationDialog"]
 oversampling_override = 1.0

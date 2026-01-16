@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8kr3y0cjxr8m"]
+[gd_scene load_steps=2 format=3 uid="uid://gblkpm37lq1j"]
 
-[ext_resource type="Script" uid="uid://uyh03f60qvd2" path="res://addons/maaacks_game_template/installer/main_scene_confirmation_dialog.gd" id="1_1ydgd"]
+[ext_resource type="Script" uid="uid://exfk51fr7yx0" path="res://addons/maaacks_game_template/installer/main_scene_confirmation_dialog.gd" id="1_1ydgd"]
 
 [node name="MainSceneConfirmationDialog" type="ConfirmationDialog"]
 oversampling_override = 1.0

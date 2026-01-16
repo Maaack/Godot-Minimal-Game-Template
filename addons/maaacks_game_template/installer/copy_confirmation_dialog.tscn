@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cyx4i4v30bw4o"]
+[gd_scene format=3 uid="uid://byupuycr28u17"]
 
 [node name="CopyConfirmationDialog" type="ConfirmationDialog"]
 oversampling_override = 1.0

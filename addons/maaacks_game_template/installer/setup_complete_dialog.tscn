@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bivpkn7n06h1e"]
+[gd_scene format=3 uid="uid://bie1wby7a56or"]
 
 [node name="SetupCompleteDialog" type="AcceptDialog"]
 oversampling_override = 1.0

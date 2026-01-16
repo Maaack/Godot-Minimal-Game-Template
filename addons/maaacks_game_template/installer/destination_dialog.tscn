@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ckx50am7thhd2"]
+[gd_scene format=3 uid="uid://doa4t485iflon"]
 
 [node name="DestinationDialog" type="FileDialog"]
 oversampling_override = 1.0

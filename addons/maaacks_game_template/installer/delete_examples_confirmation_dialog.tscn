@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://vgdxevcnv0vx"]
+[gd_scene format=3 uid="uid://n2pm5se13638"]
 
 [node name="DeleteExamplesConfirmationDialog" type="ConfirmationDialog"]
 oversampling_override = 1.0
