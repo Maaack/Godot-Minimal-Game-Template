@@ -4,7 +4,7 @@ These are instructions for further editing the menus. Basic instructions are ava
 
 ## Inheritance
 
-Most example scenes in the template inherit from scenes in `addons`. This is useful for developing of the plugin, but often less useful for those using it.  When editing the example scenes, any nodes inherited from a parent scene are highlighted in yellow in the scene tree. Inherited nodes cannot be edited like native nodes. Therefore, it is recommended to first right-click on the root node, and select `Clear Inheritance`. You'll get a warning that this cannot be undone, but it's okay. You probably won't need to undo it, and if you do, there are solutions.
+Most example scenes in the template inherit from scenes in `addons`. This is useful for developing of the plugin, but often less useful for those using it.When editing the example scenes, any nodes inherited from a parent scene are highlighted in yellow in the scene tree. Inherited nodes cannot be edited like native nodes. Therefore, it is recommended to first right-click on the root node, and select `Clear Inheritance`. You'll get a warning that this cannot be undone, but it's okay. You probably won't need to undo it, and if you do, there are solutions.
 
 ## Visual Placement
 

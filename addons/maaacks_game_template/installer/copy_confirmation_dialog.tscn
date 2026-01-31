@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://byupuycr28u17"]
 
-[node name="CopyConfirmationDialog" type="ConfirmationDialog"]
+[node name="CopyConfirmationDialog" type="ConfirmationDialog" unique_id=1586767200]
 oversampling_override = 1.0
 title = "Copy Examples"
 initial_position = 2

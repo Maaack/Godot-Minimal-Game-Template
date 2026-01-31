@@ -18,14 +18,14 @@ In the next window, select a style and then wait for the icons to download, extr
 If the icons have already been installed before, you will be presented with the option to skip re-downloading.
 
 > [!WARNING]  
-> This may crash the editor.  
+> This may crash the editor.
 > In that event, check if the process completed, and try running the setup again.
 
 ### Manual
 
 Available from [kenney.nl](https://kenney.nl/assets/input-prompts) and [itch.io](https://kenney-assets.itch.io/input-prompts).
 
-This pack is organized by `Device/IconType`. The `IconTypes` for each device are just `Default`, `Vector`, or `Double`. These instructions will assume using `Default`. In the inspector of `InputIconMapper`, set the `directories` to include the subdirectories of the asset pack.  
+This pack is organized by `Device/IconType`. The `IconTypes` for each device are just `Default`, `Vector`, or `Double`. These instructions will assume using `Default`. In the inspector of `InputIconMapper`, set the `directories` to include the subdirectories of the asset pack.
 * `.../kenney_input-prompts/Keyboard & Mouse/Default`  
 * `.../kenney_input-prompts/Generic/Default`  
 * `.../kenney_input-prompts/Xbox Series/Default`  
@@ -58,9 +58,9 @@ Under the `FileLister` properties of the `InputIconMapper`, expand the `Constrai
 
 Press `Refresh Files`.
 
-If you want to use colored icons, in `prioritized_strings` add `color`. Otherwise set `filter="color"`.  
+If you want to use colored icons, in `prioritized_strings` add `color`. Otherwise set `filter="color"`.
 
-Press `Match Icons to Inputs`.  
+Press `Match Icons to Inputs`.
 
 Validate the results by inspecting the `matching_icons` dictionary.
 
@@ -75,9 +75,9 @@ Press `Refresh Files`.
 Add to `filtered_strings`:
 * `outline`
 
-In `prioritized_strings` add `outline`. If you want to use colored icons, in `prioritized_strings` add `color`, too. Otherwise set `filter="color"`.  
+In `prioritized_strings` add `outline`. If you want to use colored icons, in `prioritized_strings` add `color`, too. Otherwise set `filter="color"`.
 
-Press `Match Icons to Inputs`.  
+Press `Match Icons to Inputs`.
 
 Validate the results by inspecting the `matching_icons` dictionary.
 

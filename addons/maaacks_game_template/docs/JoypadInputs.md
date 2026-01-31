@@ -15,7 +15,7 @@ This page covers topics related to working with joypads.
 
 ## Added UI Inputs
 
-There is a `override.cfg` in the project root directory that adds a few additional inputs to the project's built-in UI actions.  
+There is a `override.cfg` in the project root directory that adds a few additional inputs to the project's built-in UI actions.
 
 These additional inputs are for joypads and include the following:  
 
