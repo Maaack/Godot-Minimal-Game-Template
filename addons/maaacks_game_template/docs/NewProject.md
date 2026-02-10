@@ -28,7 +28,7 @@ These instructions assume starting with the entire contents of the project folde
     4.  Open `main_menu_with_animations.tscn`.
     5.  Select the `TitleLabel` node.
     6.  The `Text` should match the project's name.
-        1. If `Text` is customized, set `Auto Update` to false.
+        1. If `Text` is customized, set `Auto Update` to false.  
     7.  Select the `SubtitleLabelNode` node and customize the `Text` as desired.
     8.  Save the scene.
 

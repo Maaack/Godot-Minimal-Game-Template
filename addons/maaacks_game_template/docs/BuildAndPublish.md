@@ -58,7 +58,7 @@ Go to your Github repository Settings > Secrets and Variables > Actions. Then, s
 Create two **Repository Variables**: `GODOT_VERSION` and `EXPORT_NAME`. 
 
 > [!NOTE]  
-> Repository variables will be available for this Github repository only, [but you can do more complex stuff if required](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables).
+> Repository variables will be available for this Github repository only, [but you can do more complex stuff if required](https://docs.github.com/en/actions/how-tos/write-workflows/choose-what-workflows-do/use-variables).  
 > Using variables is great, because repo admins can still see these values in Github and edit them.
 
 Change the `EXPORT_NAME` to fit the name of your game. This will be the name of the file your players download.
@@ -82,7 +82,7 @@ By default, the workflow file tries to build configs named `Web`, `Linux`, `macO
 
 #### Deleting a platform
 
-If you **don't want** to export to one platform, **delete** the build jobs and the publish steps in the `build-and-publish.yml`.
+If you **don't want** to export to one platform, **delete** the build jobs and the publish steps in the `build-and-publish.yml`.  
 
 For example, if you don't want to export for macOS, delete this part which builds the artifact:
 
@@ -146,7 +146,7 @@ If you want to export to a **new** platform, **copy paste** the build job and ad
 
 In the build job, change:
    1. the name of the **export config** that you created in Godot.
-   2. the paths in which the build artifact is created.
+   2. the paths in which the build artifact is created.  
 
 For example:
 

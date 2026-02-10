@@ -3,7 +3,7 @@
 This page covers some tips for rearranging files to an individual developer's preference.
 
 > [!WARNING]  
-> Backup your project before attempting to rearrange files.
+> Backup your project before attempting to rearrange files.  
 > You assume any risk.
 
 ## Move Files in the Editor
@@ -14,11 +14,11 @@ UIDs do help with moving files outside of the editor, but not all scenes will ha
 
 ## Update File Paths
 
-The flow of scenes in the template by default goes `Opening -> Main Menu -> Game Scene -> Ending Scene`. 
+The flow of scenes in the template by default goes `Opening -> Main Menu -> Game Scene -> Ending Scene`.   
 
-The `Opening` is referenced in the project settings, and will get automatically update if moved in the editor.
+The `Opening` is referenced in the project settings, and will get automatically update if moved in the editor.  
 
-The rest have their default paths stored in the `AppConfig` autoload. These do not get automatically updated, so the developer must update these paths if they change.
+The rest have their default paths stored in the `AppConfig` autoload. These do not get automatically updated, so the developer must update these paths if they change.  
 
 Alternatively, the developer can specify paths in the scenes that reference the other scenes by path. These include:
 * `opening.tscn`  

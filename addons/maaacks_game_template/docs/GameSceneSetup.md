@@ -1,6 +1,6 @@
 # Game Scene Setup
 
-When setting up a game scene, it is useful to refer to the `game_scene/game_ui.tscn` included in the examples.
+When setting up a game scene, it is useful to refer to the `game_scene/game_ui.tscn` included in the examples.  
 
 There are a few parts to setting up a basic game scene, as done in the `GameUI` example used in the template.
 
@@ -29,16 +29,16 @@ Alternatively, with open world progression, the reference in the `scene_lister` 
 By default, the manager will open `starting_level_path`. It'll then set the checkpoint to the next level sent in the `level_won` or `level_changed` signal from the current level. If no level path is provided, it'll load the window for the game being won.
 
 ### Games without levels
-Level Loading is not required if the entire game takes place in one scene.
+Level Loading is not required if the entire game takes place in one scene.  
 
 In that case, the following nodes can be safely removed:
 * LevelLoader
 * LevelManager
 * LevelLoadingScreen
   
-The single level scene can then be added directly to the `SubViewport`, another container, or the root node.
+The single level scene can then be added directly to the `SubViewport`, another container, or the root node.  
 
-To manage the win and lose screens and transitioning to other scenes, add a `Node` and attach the `win_lose_manager.gd` script. Inspect the node to attach the win / lose screens and paths. The `game_won()` or `game_lost()` will then need to be called when gameplay conditions are met.
+To manage the win and lose screens and transitioning to other scenes, add a `Node` and attach the `win_lose_manager.gd` script. Inspect the node to attach the win / lose screens and paths. The `game_won()` or `game_lost()` will then need to be called when gameplay conditions are met.  
 
 ## SubViewports
 The game example has the levels loaded into a `SubViewport` node, contained within a `SubViewportContainer`. This has a couple of advantages.
@@ -55,7 +55,7 @@ It has some disadvantages, as well.
 - Requires enabling Audio Listeners to hear audio from the game world.
 - Extra processing overhead for the viewport layer.
 
-If a subviewport does not work well for the game, use any empty `Node` as the game world or level container, instead.
+If a subviewport does not work well for the game, use any empty `Node` as the game world or level container, instead.  
 
 ### Pixel Art Games
 If working with a pixel art game, often the goal is that the number of art pixels on-screen is to remain the same regardless of screen resolution. As in, the art scales with the monitor, rather than bigger monitors showing more of a scene. This is done by setting the viewport size in the project settings, and setting the stretch mode to either `canvas_mode` or `viewport`.
@@ -66,11 +66,11 @@ If a higher resolution is desired for the menus and UI than the game, then the p
 If trying to detect `mouse_enter` and `mouse_exit` events on areas inside the game world, enable physics object picking on the `SubViewport`.
 
 ## Read Inputs
-Generally, any game is going to require reading some inputs from the player. Where in the scene hierarchy the reading occurs is best answered with simplicity.
+Generally, any game is going to require reading some inputs from the player. Where in the scene hierarchy the reading occurs is best answered with simplicity.  
 
-If the game involves moving a player character, then the inputs for movements could be read by a `player_character.gd` script overriding the `_process(delta)` or `_input(event)` methods.
+If the game involves moving a player character, then the inputs for movements could be read by a `player_character.gd` script overriding the `_process(delta)` or `_input(event)` methods.  
 
-If the game involves sending commands to multiple units, then those inputs probably should be read by a `game_ui.gd` script, that then propagates those calls further down the chain.
+If the game involves sending commands to multiple units, then those inputs probably should be read by a `game_ui.gd` script, that then propagates those calls further down the chain.  
 
 ## Win & Lose Screens
 The example includes win and lose screens. These are triggered by the `LevelManager` when a level is won or lost.
