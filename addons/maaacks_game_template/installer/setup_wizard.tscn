@@ -31,7 +31,6 @@ theme_override_constants/separation = 16
 unique_name_in_owner = true
 custom_minimum_size = Vector2(384, 0)
 layout_mode = 2
-text = "Maaack's Minimal Game Template v1.4.4"
 autowrap_mode = 3
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=2006786204]
@@ -47,19 +46,17 @@ columns = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Using Latest Version"
+text = "Update to Latest Version"
 
 [node name="UpdateCheckBox" type="CheckBox" parent="VBoxContainer/StepsContainer" unique_id=1135333170]
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
-button_pressed = true
 
 [node name="UpdateButton" type="Button" parent="VBoxContainer/StepsContainer" unique_id=240586962]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-disabled = true
 text = "Run"
 
 [node name="CopyLabel" type="Label" parent="VBoxContainer/StepsContainer" unique_id=1686023151]
@@ -71,12 +68,12 @@ text = "Copy Example Files"
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
-button_pressed = true
 
 [node name="CopyButton" type="Button" parent="VBoxContainer/StepsContainer" unique_id=483428440]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+disabled = true
 text = "Run"
 
 [node name="DeleteLabel" type="Label" parent="VBoxContainer/StepsContainer" unique_id=428291774]
@@ -93,6 +90,7 @@ disabled = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+disabled = true
 text = "Run"
 
 [node name="SetMainSceneLabel" type="Label" parent="VBoxContainer/StepsContainer" unique_id=1176347506]
@@ -104,7 +102,6 @@ text = "Set the Main Scene"
 unique_name_in_owner = true
 layout_mode = 2
 disabled = true
-button_pressed = true
 
 [node name="SetMainSceneButton" type="Button" parent="VBoxContainer/StepsContainer" unique_id=1895022454]
 unique_name_in_owner = true
@@ -127,6 +124,7 @@ disabled = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+disabled = true
 text = "Run"
 
 [node name="AddInputIconsLabel" type="Label" parent="VBoxContainer/StepsContainer" unique_id=462003890]
@@ -143,6 +141,7 @@ disabled = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
+disabled = true
 text = "Run"
 
 [connection signal="pressed" from="VBoxContainer/StepsContainer/UpdateButton" to="." method="_on_update_button_pressed"]

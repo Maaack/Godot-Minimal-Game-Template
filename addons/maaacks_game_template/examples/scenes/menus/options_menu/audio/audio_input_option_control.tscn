@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://bwiyqjcudqioy" path="res://addons/maaacks_game_template/examples/scenes/menus/options_menu/audio/audio_input_option_control.gd" id="2_6qeue"]
 
 [node name="AudioInputOptionControl" unique_id=708693291 instance=ExtResource("1_0vgeo")]
-visible = false
 script = ExtResource("2_6qeue")
 option_name = "Input Device"
 option_section = 2
