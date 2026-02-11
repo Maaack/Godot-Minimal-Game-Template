@@ -1,5 +1,5 @@
 # Godot Minimal Game Template
-For Godot 4.5 (4.3+ compatible)
+For Godot 4.6 (4.3+ compatible)
 
 This template has a main menu, options menus, pause menu, credits, extra tools, and an example game scene.  
 

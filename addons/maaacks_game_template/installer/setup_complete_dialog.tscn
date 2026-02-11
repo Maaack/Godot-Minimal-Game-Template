@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bie1wby7a56or"]
 
-[node name="SetupCompleteDialog" type="AcceptDialog"]
+[node name="SetupCompleteDialog" type="AcceptDialog" unique_id=302736089]
 oversampling_override = 1.0
 title = "Setup Complete!"
 initial_position = 2

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://n2pm5se13638"]
 
-[node name="DeleteExamplesConfirmationDialog" type="ConfirmationDialog"]
+[node name="DeleteExamplesConfirmationDialog" type="ConfirmationDialog" unique_id=279518818]
 oversampling_override = 1.0
 title = "Delete Source Examples"
 initial_position = 2
