@@ -71,11 +71,11 @@ Users that want a more complete set of features can try [Maaack's Game Template]
 
 The full Game Template includes:
 -   Loading Screen
--   Game State Management (Basic Saving/Loading)
 -   UI Sound Controller (Button SFX)
 -   Background Music Controller
 -   Credits Reader (Markdown File Parser)
--   Globals Config Autoload
+-   Global State Management (Basic Saving/Loading)
+-   Global Config Autoload
 
 ## Installation
 
