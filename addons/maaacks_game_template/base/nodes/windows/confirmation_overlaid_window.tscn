@@ -9,10 +9,10 @@ confirm_button_text = "Confirm"
 update_content = true
 close_button_text = "Cancel"
 
-[node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" index="0"]
+[node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" parent_id_path=PackedInt32Array(1873987737) index="0" unique_id=1139131565]
 vertical = false
 
-[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0"]
+[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=283447605]
 text = "Cancel"
 
 [node name="ConfirmButton" type="Button" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1" unique_id=1683395510]

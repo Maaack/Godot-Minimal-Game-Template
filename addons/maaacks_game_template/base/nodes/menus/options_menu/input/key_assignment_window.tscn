@@ -14,13 +14,13 @@ input_confirmation = 0
 close_button_text = "Close"
 title = "Set Input"
 
-[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" index="0"]
+[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(91647963) index="0" unique_id=1128241240]
 text = "Set Input"
 
-[node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin" index="0"]
+[node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin" parent_id_path=PackedInt32Array(1009835268) index="0" unique_id=369403681]
 visible = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/BoxContainer/BodyMargin" index="1" unique_id=276172538]
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/BoxContainer/BodyMargin" parent_id_path=PackedInt32Array(1009835268) index="1" unique_id=276172538]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -43,16 +43,16 @@ drag_and_drop_selection_enabled = false
 middle_mouse_paste_enabled = false
 caret_move_on_right_click = false
 
-[node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" index="0"]
+[node name="MenuButtons" parent="ContentContainer/BoxContainer/MenuButtonsMargin" parent_id_path=PackedInt32Array(1873987737) index="0" unique_id=1139131565]
 null_focus_enabled = false
 joypad_enabled = false
 mouse_hidden_enabled = false
 
-[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0"]
+[node name="CloseButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0" unique_id=283447605]
 focus_neighbor_top = NodePath("../../../BodyMargin/VBoxContainer/InputTextEdit")
 text = "Close"
 
-[node name="ConfirmButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1"]
+[node name="ConfirmButton" parent="ContentContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1" unique_id=1683395510]
 focus_neighbor_top = NodePath("../../../BodyMargin/VBoxContainer/InputTextEdit")
 
 [node name="DelayTimer" type="Timer" parent="." index="1" unique_id=1657585254]
