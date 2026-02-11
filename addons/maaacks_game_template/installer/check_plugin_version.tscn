@@ -1,14 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://depfw7i463ojc"]
+[gd_scene format=3 uid="uid://depfw7i463ojc"]
 
 [ext_resource type="Script" uid="uid://chjaeg7rfnixu" path="res://addons/maaacks_game_template/installer/check_plugin_version.gd" id="1_aqelj"]
 [ext_resource type="PackedScene" uid="uid://cf0hkngq1mgfy" path="res://addons/maaacks_game_template/utilities/api_client.tscn" id="2_5myc0"]
 
-[node name="CheckPluginVersion" type="Node"]
+[node name="CheckPluginVersion" type="Node" unique_id=2013017819]
 script = ExtResource("1_aqelj")
 plugin_directory = "maaacks_game_template"
 plugin_github_url = "https://github.com/Maaack/Godot-Minimal-Game-Template"
 
-[node name="APIClient" parent="." instance=ExtResource("2_5myc0")]
+[node name="APIClient" parent="." unique_id=920131410 instance=ExtResource("2_5myc0")]
 api_url = "https://api.github.com/repos/Maaack/Godot-Minimal-Game-Template/releases"
 request_method = 0
 

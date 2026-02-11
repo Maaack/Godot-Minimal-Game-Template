@@ -25,3 +25,4 @@ Exports/
 
 # Plugin specific
 addons/script-ide/*
+addons/maaacks_scene_loader/*
