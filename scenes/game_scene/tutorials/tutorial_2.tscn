@@ -1,17 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv5cs1lbxmxva"]
+[gd_scene format=3 uid="uid://dv5cs1lbxmxva"]
 
 [ext_resource type="PackedScene" uid="uid://6gdbfi0172ji" path="res://addons/maaacks_game_template/base/nodes/windows/overlaid_window.tscn" id="1_sjjon"]
 
-[node name="OverlaidWindow" instance=ExtResource("1_sjjon")]
+[node name="OverlaidWindow" unique_id=765994050 instance=ExtResource("1_sjjon")]
 custom_minimum_size = Vector2(420, 200)
 update_content = true
 text = "Pressing Escape will open the Pause Menu."
 title = "Tutorial"
 title_font_size = 20
 
-[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" index="0"]
+[node name="TitleLabel" parent="ContentContainer/BoxContainer/TitleMargin/BoxContainer" parent_id_path=PackedInt32Array(91647963) index="0" unique_id=1128241240]
 theme_override_font_sizes/font_size = 20
 text = "Tutorial"
 
-[node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin" index="0"]
+[node name="DescriptionLabel" parent="ContentContainer/BoxContainer/BodyMargin" parent_id_path=PackedInt32Array(1009835268) index="0" unique_id=369403681]
 text = "Pressing Escape will open the Pause Menu."

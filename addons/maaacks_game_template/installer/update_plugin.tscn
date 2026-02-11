@@ -1,43 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://d28bi7wdv8hbp"]
+[gd_scene format=3 uid="uid://d28bi7wdv8hbp"]
 
 [ext_resource type="Script" uid="uid://txkhnw0u8jy4" path="res://addons/maaacks_game_template/installer/update_plugin.gd" id="1_s6qpc"]
 [ext_resource type="PackedScene" uid="uid://cf0hkngq1mgfy" path="res://addons/maaacks_game_template/utilities/api_client.tscn" id="2_s6pdq"]
 [ext_resource type="PackedScene" uid="uid://5hhnbgqjwnic" path="res://addons/maaacks_game_template/utilities/download_and_extract.tscn" id="3_s6pdq"]
 [ext_resource type="Script" uid="uid://cgv1xnmh7vr66" path="res://addons/maaacks_game_template/installer/release_notes_label.gd" id="4_1amwf"]
 
-[node name="UpdatePlugin" type="Node"]
+[node name="UpdatePlugin" type="Node" unique_id=192125767]
 script = ExtResource("1_s6qpc")
 plugin_directory = "maaacks_game_template"
 plugin_github_url = "https://github.com/Maaack/Godot-Minimal-Game-Template"
 
-[node name="APIClient" parent="." instance=ExtResource("2_s6pdq")]
+[node name="APIClient" parent="." unique_id=897421534 instance=ExtResource("2_s6pdq")]
 api_url = "https://api.github.com/repos/Maaack/Godot-Minimal-Game-Template/releases"
 request_method = 0
 
-[node name="DownloadAndExtract" parent="." instance=ExtResource("3_s6pdq")]
+[node name="DownloadAndExtract" parent="." unique_id=692551309 instance=ExtResource("3_s6pdq")]
 extract_path = "res://"
 path_match_string = "addons/"
 skip_base_zip_dir = true
 force = true
 
-[node name="UpdateConfirmationDialog" type="ConfirmationDialog" parent="."]
+[node name="UpdateConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=607805234]
 auto_translate_mode = 1
 title = "Update Plugin?"
 initial_position = 2
 size = Vector2i(640, 360)
 dialog_autowrap = true
 
-[node name="MarginContainer" type="MarginContainer" parent="UpdateConfirmationDialog"]
+[node name="MarginContainer" type="MarginContainer" parent="UpdateConfirmationDialog" unique_id=1366172194]
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 632.0
 offset_bottom = 311.0
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UpdateConfirmationDialog/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UpdateConfirmationDialog/MarginContainer" unique_id=1306702682]
 layout_mode = 2
 
-[node name="UpdateLabel" type="Label" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer"]
+[node name="UpdateLabel" type="Label" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=1695426949]
 unique_name_in_owner = true
 layout_mode = 2
 text = "This will update the contents of the plugin folder (addons/plugin_directory/).
@@ -45,15 +45,15 @@ Files outside of the plugin folder will not be affected.
 
 Update to v0.0.0?"
 
-[node name="HSeparator" type="HSeparator" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=20078693]
 layout_mode = 2
 
-[node name="WarningMessageButton" type="LinkButton" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer"]
+[node name="WarningMessageButton" type="LinkButton" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=231955413]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Warning About Updating"
 
-[node name="WarningMessageLabel" type="Label" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer"]
+[node name="WarningMessageLabel" type="Label" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=588458496]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(624, 205)
@@ -65,19 +65,19 @@ Updating can cause issues with previously copied examples. It is recommended to 
 Lastly, save your work and proceed with caution."
 autowrap_mode = 3
 
-[node name="ReleaseNotesButton" type="LinkButton" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer"]
+[node name="ReleaseNotesButton" type="LinkButton" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=1256239963]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Show Release Notes"
 
-[node name="ReleaseNotesPanel" type="Panel" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer"]
+[node name="ReleaseNotesPanel" type="Panel" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=2021046327]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(0, 420)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ReleaseNotesLabel" type="RichTextLabel" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer/ReleaseNotesPanel"]
+[node name="ReleaseNotesLabel" type="RichTextLabel" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer/ReleaseNotesPanel" unique_id=611400908]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -98,13 +98,13 @@ h5_font_size = 16
 h6_font_size = 12
 bold_headings = true
 
-[node name="InstallingDialog" type="AcceptDialog" parent="."]
+[node name="InstallingDialog" type="AcceptDialog" parent="." unique_id=690962187]
 auto_translate_mode = 1
 title = "Installing..."
 initial_position = 2
 size = Vector2i(400, 111)
 
-[node name="MarginContainer" type="MarginContainer" parent="InstallingDialog"]
+[node name="MarginContainer" type="MarginContainer" parent="InstallingDialog" unique_id=516640038]
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 396.0
@@ -114,29 +114,29 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InstallingDialog/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InstallingDialog/MarginContainer" unique_id=713005699]
 layout_mode = 2
 alignment = 1
 
-[node name="StageLabel" type="Label" parent="InstallingDialog/MarginContainer/VBoxContainer"]
+[node name="StageLabel" type="Label" parent="InstallingDialog/MarginContainer/VBoxContainer" unique_id=1057483320]
 unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="InstallingDialog/MarginContainer/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="InstallingDialog/MarginContainer/VBoxContainer" unique_id=429862156]
 unique_name_in_owner = true
 layout_mode = 2
 max_value = 1.0
 step = 0.001
 
-[node name="ErrorDialog" type="AcceptDialog" parent="."]
+[node name="ErrorDialog" type="AcceptDialog" parent="." unique_id=402256175]
 auto_translate_mode = 1
 title = "Error!"
 initial_position = 2
 size = Vector2i(400, 128)
 
-[node name="SuccessDialog" type="AcceptDialog" parent="."]
+[node name="SuccessDialog" type="AcceptDialog" parent="." unique_id=852686035]
 auto_translate_mode = 1
 title = "Update Complete"
 initial_position = 2
