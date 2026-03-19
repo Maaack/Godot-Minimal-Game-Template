@@ -14,8 +14,7 @@ By default, more options are provided than are generally needed. It is recommend
     2.  `Inputs` can be removed unless supporting a 3D camera.
     3.  `Audio` is usually useful.
     4.  `Video` is usually useful.
-    5.  `Game` can be removed unless supporting persistant game state.
-3.  Open `mini_options_menu.tscn` or `[audio|visual|input|game]_options_menu.tscn` scenes to edit their options.  
+3.  Open `mini_options_menu.tscn` or `[audio|visual|input]_options_menu.tscn` scenes to edit their options.  
 4.  If an individual option is not desired, it can be hidden or removed entirely (sometimes with some additional work).  
 
 ## Adding Options
