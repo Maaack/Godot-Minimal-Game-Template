@@ -8,10 +8,10 @@ The main menu by default is `main_menu_with_animations.tscn`.
 
 The path to the main menu can be set directly in the following scenes:
 
-* `opening.tscn`  
-* `pause_menu_layer.tscn`  
-* `game_ui.tscn` (`level_manager.gd`)  
-* `end_credits.tscn`  
+- `opening.tscn`  
+- `pause_menu_layer.tscn`  
+- `game_ui.tscn` (`level_manager.gd`)  
+- `end_credits.tscn`  
 
 > [!IMPORTANT]  
 > Animations from 4.6 are not fully backwards compatible.  
