@@ -31,8 +31,8 @@ echo $src_dir
 rsync -av --existing "$src_dir/" "$dest_dir"
 
 # Define strings to replace
-finds=("Game Template" "Game-Template")
-replaces=("Minimal Game Template" "Minimal-Game-Template")
+finds=("Maaack's Game Template" "Godot-Game-Template")
+replaces=("Maaack's Minimal Game Template" "Godot-Minimal-Game-Template")
 
 # Checks for strings and replaces them
 for ((i=0; i<${#finds[@]}; i++)); do
