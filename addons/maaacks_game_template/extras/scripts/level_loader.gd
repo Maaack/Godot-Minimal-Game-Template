@@ -18,6 +18,7 @@ signal level_ready
 ## If Maaack's Scene Loader is installed, then it will be used to change scenes.
 @onready var scene_loader_node = get_tree().root.get_node_or_null(^"SceneLoader")
 
+var current_level_path : String
 var is_loading : bool = false
 
 func _attach_level(level_resource : Resource):
@@ -32,6 +33,7 @@ func load_level(level_path : String):
 		current_level.queue_free()
 		await current_level.tree_exited
 		current_level = null
+	current_level_path = level_path
 	if scene_loader_node:
 		is_loading = true
 		scene_loader_node.load_scene(level_path, true)
