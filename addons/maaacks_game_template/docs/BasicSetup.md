@@ -21,7 +21,7 @@ Open the _Setup Wizard_ by navigating to `Project > Tools > Run Maaack's Minimal
 -  Update Autoload Paths
 -  Set Main Scene
 
-![Setup Wizard of Minimal Game Template v1.4.4](/addons/maaacks_game_template/media/setup-wizard-window.png)
+![Setup Wizard of Game Template v1.4.4](/addons/maaacks_game_template/media/setup-wizard-window.png)
 
 Depending on how the template was installed, or if any issues occurred, some of these may need to be run from the wizard to be completed.
 
