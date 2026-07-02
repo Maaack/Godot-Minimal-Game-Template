@@ -1,9 +1,9 @@
 # Godot Minimal Game Template
-For Godot 4.6 (4.3+ compatible)
+For Godot 4.7 (4.3+ compatible)
 
 > [!NOTE]  
 > Using the latest version of Godot is recommended.   
-> See [Main Menu Setup](/addons/maaacks_game_template/docs/MainMenuSetup.md) for use with versions < 4.6.  
+> See [Main Menu Setup](/addons/maaacks_game_template/docs/MainMenuSetup.md) for use with versions < 4.7.  
 
 This template has a main menu, options menus, pause menu, credits, extra tools, and an example game scene.  
 
