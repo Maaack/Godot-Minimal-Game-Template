@@ -3,6 +3,7 @@ extends OverlaidWindow
 
 @export var options_menu_scene : PackedScene
 ## Path to a main menu scene.
+## Will attempt to read from AppConfig if left empty.
 @export_file("*.tscn") var main_menu_scene_path : String
 @export_node_path(&"ConfirmationOverlaidWindow") var restart_confirmation_node_path : NodePath
 @export_node_path(&"ConfirmationOverlaidWindow") var main_menu_confirmation_node_path : NodePath
@@ -16,13 +17,13 @@ extends OverlaidWindow
 @onready var options_button = %OptionsButton
 @onready var main_menu_button = %MainMenuButton
 @onready var exit_button = %ExitButton
-## If Maaack's Scene Loader is installed, then it will be used to change scenes.
-@onready var scene_loader_node = get_tree().root.get_node_or_null(^"SceneLoader")
 
 var open_window : Node
 var _ignore_first_cancel : bool = false
 
 func get_main_menu_scene_path() -> String:
+	if main_menu_scene_path.is_empty():
+		return AppConfig.main_menu_scene_path
 	return main_menu_scene_path
 
 func close_window() -> void:
@@ -33,30 +34,15 @@ func close_window() -> void:
 			open_window.hide()
 		open_window = null
 
-func _disable_focus() -> void:
-	for child in %MenuButtons.get_children():
-		if child is Control:
-			child.focus_mode = FOCUS_NONE
-
-func _enable_focus() -> void:
-	for child in %MenuButtons.get_children():
-		if child is Control:
-			child.focus_mode = FOCUS_ALL
-
 func _load_scene(scene_path: String) -> void:
 	_scene_tree.paused = false
-	if scene_loader_node:
-		scene_loader_node.load_scene(scene_path)
-	else:
-		get_tree().change_scene_to_file(scene_path)
+	SceneLoader.load_scene(scene_path)
 
 func _show_window(window : Control) -> void:
-	_disable_focus.call_deferred()
 	window.show()
 	open_window = window
 	await window.hidden
 	open_window = null
-	_enable_focus.call_deferred()
 
 func _load_and_show_menu(scene : PackedScene) -> void:
 	var window_instance : Control = scene.instantiate()
@@ -109,7 +95,7 @@ func _on_exit_button_pressed() -> void:
 	_show_window(exit_confirmation)
 
 func _on_restart_confirmation_confirmed() -> void:
-	get_tree().reload_current_scene()
+	SceneLoader.reload_current_scene()
 	close()
 
 func _on_main_menu_confirmation_confirmed():
