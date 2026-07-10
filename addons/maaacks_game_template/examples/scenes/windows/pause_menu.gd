@@ -33,16 +33,6 @@ func close_window() -> void:
 			open_window.hide()
 		open_window = null
 
-func _disable_focus() -> void:
-	for child in %MenuButtons.get_children():
-		if child is Control:
-			child.focus_mode = FOCUS_NONE
-
-func _enable_focus() -> void:
-	for child in %MenuButtons.get_children():
-		if child is Control:
-			child.focus_mode = FOCUS_ALL
-
 func _load_scene(scene_path: String) -> void:
 	_scene_tree.paused = false
 	if scene_loader_node:
@@ -51,12 +41,10 @@ func _load_scene(scene_path: String) -> void:
 		get_tree().change_scene_to_file(scene_path)
 
 func _show_window(window : Control) -> void:
-	_disable_focus.call_deferred()
 	window.show()
 	open_window = window
 	await window.hidden
 	open_window = null
-	_enable_focus.call_deferred()
 
 func _load_and_show_menu(scene : PackedScene) -> void:
 	var window_instance : Control = scene.instantiate()
