@@ -3,7 +3,6 @@ extends OverlaidWindow
 
 @export var options_menu_scene : PackedScene
 ## Path to a main menu scene.
-## Will attempt to read from AppConfig if left empty.
 @export_file("*.tscn") var main_menu_scene_path : String
 @export_node_path(&"ConfirmationOverlaidWindow") var restart_confirmation_node_path : NodePath
 @export_node_path(&"ConfirmationOverlaidWindow") var main_menu_confirmation_node_path : NodePath

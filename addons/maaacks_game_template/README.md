@@ -86,7 +86,7 @@ The full Game Template includes:
 ### Godot Asset Store & Library
 This package is available as both a template and a plugin, meaning it can be used to start a new project, or added to an existing project. 
 
-![Package Icon](/addons/maaacks_game_template/media/game-icon-black-transparent-256x256.png)  
+![Package Icon](/addons/maaacks_game_template/media/mini-game-icon-black-transparent-256x256.png)  
 
 When starting a new project:
 
