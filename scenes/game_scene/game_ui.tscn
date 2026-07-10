@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://ohxpkfy8oudh"]
 
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_game_template/base/nodes/utilities/pause_menu_controller.gd" id="1_onvsj"]
-[ext_resource type="PackedScene" uid="uid://wm2nmhcpk5qp" path="res://scenes/windows/pause_menu_layer.tscn" id="2_8qp3c"]
+[ext_resource type="PackedScene" uid="uid://cykg8mo1w6e7o" path="res://scenes/windows/pause_menu_layer.tscn" id="2_8qp3c"]
 [ext_resource type="Script" uid="uid://bbymrin0cm704" path="res://addons/maaacks_game_template/extras/scripts/level_loader.gd" id="3_bmy5n"]
 [ext_resource type="Script" uid="uid://bllg4gg7v1tsr" path="res://addons/maaacks_game_template/extras/scripts/level_manager.gd" id="4_7aihr"]
-[ext_resource type="PackedScene" uid="uid://ba11po12cvait" path="res://scenes/windows/game_won_window.tscn" id="5_3re04"]
-[ext_resource type="PackedScene" uid="uid://bx7s80d8smic4" path="res://scenes/windows/level_lost_window.tscn" id="6_ascoc"]
-[ext_resource type="PackedScene" uid="uid://cc0d45hr46e5m" path="res://scenes/windows/level_won_window.tscn" id="7_wr4n6"]
+[ext_resource type="PackedScene" uid="uid://c2o58baew6sqw" path="res://scenes/windows/game_won_window.tscn" id="5_3re04"]
+[ext_resource type="PackedScene" uid="uid://c6edvfni5n6uu" path="res://scenes/windows/level_lost_window.tscn" id="6_ascoc"]
+[ext_resource type="PackedScene" uid="uid://bnmwccmxfg6ym" path="res://scenes/windows/level_won_window.tscn" id="7_wr4n6"]
 [ext_resource type="Script" uid="uid://wjq7li836lwj" path="res://addons/maaacks_game_template/extras/scripts/scene_lister.gd" id="8_ukb12"]
-[ext_resource type="Script" uid="uid://bnhmjy582mlax" path="res://scenes/game_scene/configurable_sub_viewport.gd" id="10_rkfhe"]
+[ext_resource type="Script" uid="uid://ixrc0cl72dib" path="res://scenes/game_scene/configurable_sub_viewport.gd" id="10_rkfhe"]
 
 [node name="GameUI" type="Control" unique_id=916921519]
 layout_mode = 3
