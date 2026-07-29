@@ -10,7 +10,7 @@ The path to the main menu can be set directly in the following scenes:
 
 - `opening.tscn`  
 - `pause_menu_layer.tscn`  
-- `game_ui.tscn` (`level_manager.gd`)  
+- `game.tscn` (`level_manager.gd`)  
 - `end_credits.tscn`  
 
 > [!IMPORTANT]  
