@@ -1,6 +1,6 @@
 # Game Scene Setup
 
-When setting up a game scene, it is useful to refer to the `game_scene/game.tscn` included in the examples.  
+When setting up a game scene, it is useful to refer to the `game/game.tscn` included in the examples.  
 
 There are a few parts to setting up a basic game scene, as done in the `Game` example used in the template.
 
