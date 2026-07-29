@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cv3106iacv6ln" path="res://scenes/windows/main_menu_credits_window.gd" id="2_bndrm"]
 [ext_resource type="PackedScene" uid="uid://dalp26h275cyj" path="res://scenes/credits/scrollable_credits.tscn" id="3_8w6bb"]
 
-[node name="MainMenuCreditsOverlaidWindow" unique_id=1755624419 instance=ExtResource("1_rkudv")]
+[node name="MainMenuCreditsOverlaidWindow" unique_id=279276071 instance=ExtResource("1_rkudv")]
 anchors_preset = 15
 anchor_left = 0.0
 anchor_top = 0.0
