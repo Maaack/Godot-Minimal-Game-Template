@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://b8doiervc4q6d" path="res://scenes/windows/main_menu_options_window.tscn" id="3_x31ro"]
 [ext_resource type="PackedScene" uid="uid://bu5rg6scbsyqs" path="res://scenes/windows/main_menu_credits_window.tscn" id="4_0jpat"]
 
-[node name="MainMenu" unique_id=282289354 instance=ExtResource("1_peecx")]
+[node name="MainMenu" unique_id=170048243 instance=ExtResource("1_peecx")]
 script = ExtResource("2_ub2bi")
-game_scene_path = "res://scenes/game_scene/game_ui.tscn"
+game_scene_path = "res://scenes/game/game.tscn"
 options_packed_scene = ExtResource("3_x31ro")
 credits_packed_scene = ExtResource("4_0jpat")

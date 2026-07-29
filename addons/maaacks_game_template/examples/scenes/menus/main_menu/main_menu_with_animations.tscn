@@ -315,7 +315,7 @@ graph_offset = Vector2(-180.277, 49)
 
 [node name="MainMenu" unique_id=2084566378 instance=ExtResource("1_0i2sc")]
 script = ExtResource("2_ncvk7")
-game_scene_path = "res://addons/maaacks_game_template/examples/scenes/game_scene/game_ui.tscn"
+game_scene_path = "res://addons/maaacks_game_template/examples/scenes/game/game.tscn"
 options_packed_scene = ExtResource("3_4saoe")
 credits_packed_scene = ExtResource("4_801fg")
 

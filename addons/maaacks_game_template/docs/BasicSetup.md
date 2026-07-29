@@ -42,19 +42,19 @@ To change the _Main Menu_:
 
 Other scenes that need updating:
 - `pause_menu_layer.tscn`
-- `game_ui.tscn` (`level_manager.gd`)  
+- `game.tscn` (`level_manager.gd`)  
 - `end_credits.tscn`  
 
 To change the _Game Scene_:
 
 1.  Open `main_menu_with_animations.tscn`.
 2.  Select the `MainMenu` root node.
-3.  Update `Game Scene Path` to the path of the project's game scene (`game_ui.tscn` by default).  
+3.  Update `Game Scene Path` to the path of the project's game scene (`game.tscn` by default).  
 4.  Save the scene.
 
 To change the _Ending Scene_:
 
-1.  Open `game_ui.tscn`.
+1.  Open `game.tscn`.
 2.  Select the `LevelManager` node.
 3.  Expand the `Scenes` Option Group in the Inspector.
 4.  Update the optional `Ending Scene Path` to the desired scene (`end_credits.tscn` by default).  
