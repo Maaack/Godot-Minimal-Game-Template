@@ -9,7 +9,7 @@ const APIClient = MaaacksGameTemplatePlugin.APIClient
 const ReleaseNotesLabel = preload("./release_notes_label.gd")
 
 const API_RELEASES_URL := "https://api.github.com/repos/%s/%s/releases"
-const UPDATE_CONFIRMATION_MESSAGE := "This will update the contents of the plugin folder (addons/%s/).\nFiles outside of the plugin folder will not be affected.\n\nUpdate %s to v%s?"
+const UPDATE_CONFIRMATION_MESSAGE := "This will update the contents of the plugin folder (addons/%s/).\nFiles outside of the plugin folder will not be affected.\n\nUpdate %s to %s?"
 const PLUGIN_EXTRACT_PATH := "res://addons/%s/"
 const PLUGIN_TEMP_ZIP_PATH := "res://%s_%s_update.zip"
 
@@ -23,8 +23,6 @@ const PLUGIN_TEMP_ZIP_PATH := "res://%s_%s_update.zip"
 @export_group("Advanced")
 ## If true, automatically download the new version when ready.
 @export var auto_start : bool = false
-## Text to remove from the tag before showing to the user.
-@export var replace_tag_name : String = "v"
 ## The default lowest version to display.
 @export var default_version : String = "0.0.0"
 ## If true, test getting the new version.
@@ -96,10 +94,7 @@ func _on_api_client_response_received(response_body : Variant) -> void:
 	var latest_release : Dictionary = response_body.front()
 	_newest_version = default_version
 	if latest_release.has("tag_name"):
-		var tag_name = latest_release["tag_name"]
-		if replace_tag_name:
-			tag_name = tag_name.replacen(replace_tag_name, "")
-		_newest_version = tag_name
+		_newest_version = latest_release["tag_name"]
 	if latest_release.has("zipball_url"):
 		_zipball_url = latest_release["zipball_url"]
 	_download_and_extract_node.zip_url = _zipball_url
