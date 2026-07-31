@@ -8,7 +8,11 @@ const DownloadAndExtract = MaaacksGameTemplatePlugin.DownloadAndExtract
 const APIClient = MaaacksGameTemplatePlugin.APIClient
 const ReleaseNotesLabel = preload("./release_notes_label.gd")
 
-const API_RELEASES_URL := "https://api.github.com/repos/%s/%s/releases"
+const GITHUB_REGEX := "https:\\/\\/github\\.com\\/([\\w-]+)\\/([\\w-]+)\\/*"
+const GITHUB_RELEASES_URL := "https://api.github.com/repos/%s/%s/releases"
+const RELEASES_URL_MAP := {
+	GITHUB_REGEX : GITHUB_RELEASES_URL
+}
 const UPDATE_CONFIRMATION_MESSAGE := "This will update the contents of the plugin folder (addons/%s/).\nFiles outside of the plugin folder will not be affected.\n\nUpdate %s to %s?"
 const PLUGIN_EXTRACT_PATH := "res://addons/%s/"
 const PLUGIN_TEMP_ZIP_PATH := "res://%s_%s_update.zip"
@@ -16,9 +20,9 @@ const PLUGIN_TEMP_ZIP_PATH := "res://%s_%s_update.zip"
 ## The directory of the plugin to update. Typically in res://addons/.
 @export var plugin_directory : String
 ## The URL of the GitHub repo to pull new releases.
-@export var plugin_github_url : String :
+@export var plugin_repo_url : String :
 	set(value):
-		plugin_github_url = value
+		plugin_repo_url = value
 		_update_urls()
 @export_group("Advanced")
 ## If true, automatically download the new version when ready.
@@ -64,14 +68,17 @@ func _load_plugin_details() -> void:
 			_plugin_name = config.get_value("plugin", "name", "Plugin")
 
 func _update_urls() -> void:
-	if plugin_github_url.is_empty(): return
+	if plugin_repo_url.is_empty(): return
 	if _api_client == null: return
-	var regex := RegEx.create_from_string("https:\\/\\/github\\.com\\/([\\w-]+)\\/([\\w-]+)\\/*")
-	var regex_match := regex.search(plugin_github_url)
-	if regex_match == null: return
-	var username := regex_match.get_string(1)
-	var repository := regex_match.get_string(2)
-	_api_client.api_url = API_RELEASES_URL % [username, repository]
+	for regex_key in RELEASES_URL_MAP:
+		var regex := RegEx.create_from_string(regex_key)
+		var regex_match := regex.search(plugin_repo_url)
+		if regex_match == null:
+			continue
+		var username := regex_match.get_string(1)
+		var repository := regex_match.get_string(2)
+		_api_client.api_url = RELEASES_URL_MAP[regex_key] % [username, repository]
+		return
 
 func _show_error_dialog(error : String) -> void:
 	_error_dialog.show()
