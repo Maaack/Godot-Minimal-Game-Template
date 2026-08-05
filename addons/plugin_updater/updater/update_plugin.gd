@@ -13,7 +13,7 @@ const GITHUB_RELEASES_URL := "https://api.github.com/repos/%s/%s/releases"
 const RELEASES_URL_MAP := {
 	GITHUB_REGEX : GITHUB_RELEASES_URL
 }
-const UPDATE_CONFIRMATION_MESSAGE := "This will update the contents of %s.\nFiles outside of there will not be affected.\n\nUpdate %s to %s?"
+const UPDATE_CONFIRMATION_MESSAGE := "This will update the contents of %s.\nFiles outside of %s will not be affected.\n\nUpdate %s to %s?"
 const PLUGIN_TEMP_ZIP_PATH := "res://addons/%s_%s_update.zip"
 
 ## The directory of the plugin to update. Typically in res://addons/.
@@ -48,7 +48,7 @@ var _plugin_name : String
 var _current_plugin_version : String
 
 func _load_plugin_details() -> void:
-	if plugin_directory.is_empty(): return
+	if plugin_directory.is_empty() or not DirAccess.dir_exists_absolute(plugin_directory): return
 	for enabled_plugin in ProjectSettings.get_setting("editor_plugins/enabled"):
 		if enabled_plugin.contains(plugin_directory):
 			var config := ConfigFile.new()
@@ -97,7 +97,8 @@ func _on_api_client_response_received(response_body : Variant) -> void:
 		_zipball_url = latest_release["zipball_url"]
 	_download_and_extract_node.zip_url = _zipball_url
 	_download_and_extract_node.zip_file_path = PLUGIN_TEMP_ZIP_PATH % [_plugin_name.to_pascal_case(), _newest_version]
-	_update_label.text = UPDATE_CONFIRMATION_MESSAGE % [plugin_directory, _plugin_name, _newest_version]
+	var _relative_path := "res://%s" % _download_and_extract_node.path_match_string
+	_update_label.text = UPDATE_CONFIRMATION_MESSAGE % [plugin_directory, _relative_path, _plugin_name, _newest_version]
 	if latest_release.has("body"):
 		_release_notes_label.from_release_notes(latest_release["body"])
 	_update_confirmation_dialog.show()
@@ -136,6 +137,7 @@ func _on_release_notes_button_pressed() -> void:
 	_release_notes_button.hide()
 
 func get_latest_release() -> void:
+	_load_plugin_details()
 	_api_client.request()
 
 func _ready() -> void:
