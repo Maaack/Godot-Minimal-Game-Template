@@ -6,7 +6,6 @@ const PLUGIN_PATH = "res://addons/maaacks_game_template/"
 const PLUGIN_NAME = "Maaack's Minimal Game Template"
 const PROJECT_SETTINGS_PATH = "maaacks_game_template/"
 const PLUGIN_REPO_URL = "https://github.com/Maaack/Godot-Minimal-Game-Template"
-const APIClient = preload(PLUGIN_PATH + "utilities/api_client.gd")
 const DownloadAndExtract = preload(PLUGIN_PATH + "utilities/download_and_extract.gd")
 const CopyAndEdit = preload(PLUGIN_PATH + "installer/copy_and_edit_files.gd")
 
