@@ -98,6 +98,8 @@ func _remove_update_plugin_submenu_option(plugin_directory:String) -> void:
 	_popup_menu.remove_item(_index)
 	submenu_directory_id_map.erase(plugin_directory)
 	submenu_id_directory_map.erase(_submenu_item_id)
+	if submenu_directory_id_map.is_empty():
+		_remove_update_plugin_tool_option()
 
 func _remove_update_plugin_tool_option() -> void:
 	if not added_menu_item:
