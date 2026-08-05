@@ -9,6 +9,7 @@ const DownloadAndExtract := preload("utilities/download_and_extract.gd")
 const CheckPluginVersion := preload("updater/check_plugin_version.gd")
 const UpdatePlugin := preload("updater/update_plugin.gd")
 
+static var instance:PluginUpdater
 var _check_plugin_version_scene:PackedScene = preload("updater/check_plugin_version.tscn")
 var _update_plugin_scene:PackedScene = preload("updater/update_plugin.tscn")
 var added_menu_item:bool = false
@@ -33,7 +34,13 @@ func get_plugin_path() -> String:
 func _on_new_version_detected(new_plugin_version:String, check_version_instance:CheckPluginVersion) -> void:
 	_add_update_plugin_tool_option(check_version_instance.get_plugin_name(), new_plugin_version, check_version_instance.plugin_directory, check_version_instance.plugin_repo_url)
 
-func _open_check_plugin_version() -> void:
+func get_check_plugin_version(plugin_directory:String, plugin_repo_url:String) -> CheckPluginVersion:
+	var check_version_instance:CheckPluginVersion = _check_plugin_version_scene.instantiate()
+	check_version_instance.plugin_directory = plugin_directory
+	check_version_instance.plugin_repo_url = plugin_repo_url
+	return check_version_instance
+
+func _check_all_registered_plugins() -> void:
 	var plugin_repos = get_plugin_repos()
 	if plugin_repos.is_empty():
 		return
@@ -80,7 +87,7 @@ func _remove_update_plugin_tool_option() -> void:
 	remove_tool_menu_item("Update Plugins...")
 
 func _add_tool_options() -> void:
-	_open_check_plugin_version()
+	_check_all_registered_plugins()
 
 func _remove_tool_options() -> void:
 	_remove_update_plugin_tool_option()
@@ -88,7 +95,9 @@ func _remove_tool_options() -> void:
 func _enter_tree() -> void:
 	add_plugin(get_plugin_path(), PROJECT_REPO_URL)
 	_add_tool_options()
+	instance = self
 
 func _exit_tree() -> void:
 	remove_plugin(get_plugin_path())
 	_remove_tool_options()
+	instance = null

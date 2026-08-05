@@ -5,7 +5,7 @@ extends EditorPlugin
 const PLUGIN_PATH = "res://addons/maaacks_game_template/"
 const PLUGIN_NAME = "Maaack's Minimal Game Template"
 const PROJECT_SETTINGS_PATH = "maaacks_game_template/"
-
+const PLUGIN_REPO_URL = "https://github.com/Maaack/Godot-Minimal-Game-Template"
 const APIClient = preload(PLUGIN_PATH + "utilities/api_client.gd")
 const DownloadAndExtract = preload(PLUGIN_PATH + "utilities/download_and_extract.gd")
 const CopyAndEdit = preload(PLUGIN_PATH + "installer/copy_and_edit_files.gd")
@@ -305,7 +305,7 @@ func _enter_tree() -> void:
 	_add_translations()
 	_show_plugin_dialogues()
 	_resave_if_recently_opened()
-	PluginUpdater.add_plugin(get_plugin_path(), "https://github.com/Maaack/Godot-Minimal-Game-Template")
+	PluginUpdater.add_plugin(get_plugin_path(), PLUGIN_REPO_URL)
 	instance = self
 
 func _exit_tree() -> void:
