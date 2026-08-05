@@ -3,7 +3,7 @@ extends Node
 ## Script for comparing the version of a plugin to the latest release.
 
 signal new_version_detected(new_version:String)
-signal versions_matched
+signal versions_matched(current_version:String)
 signal failed
 signal done
 
@@ -89,12 +89,12 @@ func _on_api_client_response_received(response_body) -> void:
 		return
 	var current_tag_name = get_plugin_version()
 	if tag_name == current_tag_name:
-		versions_matched.emit()
+		versions_matched.emit(tag_name)
 	else:
 		var regex := RegEx.create_from_string("^[^0-9]*(.+)$")
 		var regex_match := regex.search(tag_name)
 		if regex_match.get_group_count() > 0 and regex_match.get_string(1) == current_tag_name:
-			versions_matched.emit()
+			versions_matched.emit(tag_name)
 		else:
 			new_version_detected.emit(tag_name)
 	done.emit()
@@ -104,13 +104,13 @@ func compare_versions(_plugin_directory = plugin_directory, _plugin_repo_url = p
 	_api_client.request()
 
 func _on_failed_verbose():
-	push_warning("check plugin version failed")
+	print("%s %s ?? (check failed!)" % [get_plugin_name(), get_plugin_version()])
 
-func _on_versions_matched():
-	print("%s: versions matched" % plugin_name)
+func _on_versions_matched(version: String):
+	print("%s %s == %s" % [get_plugin_name(), get_plugin_version(), version])
 
 func _on_new_version_detected(version: String):
-	print("%s: new version %s" % [plugin_name, version])
+	print("%s %s != %s (new version!)" % [get_plugin_name(), get_plugin_version(), version])
 
 func compare_versions_verbose() -> void:
 	failed.connect(_on_failed_verbose)

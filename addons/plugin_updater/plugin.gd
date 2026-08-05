@@ -2,18 +2,17 @@
 class_name PluginUpdater
 extends EditorPlugin
 
-const PROJECT_SETTINGS_PATH = "plugin_updater/plugins"
-const WINDOW_OPEN_DELAY : float = 0.5
+const PROJECT_SETTINGS_PATH := "plugin_updater/plugins"
+const PROJECT_REPO_URL := "https://github.com/Maaack/Godot-Plugin-Updater"
+const APIClient := preload("utilities/api_client.gd")
+const DownloadAndExtract := preload("utilities/download_and_extract.gd")
+const CheckPluginVersion := preload("updater/check_plugin_version.gd")
+const UpdatePlugin := preload("updater/update_plugin.gd")
 
-const APIClient = preload("utilities/api_client.gd")
-const DownloadAndExtract = preload("utilities/download_and_extract.gd")
-const CheckPluginVersion = preload("updater/check_plugin_version.gd")
-const UpdatePlugin = preload("updater/update_plugin.gd")
-
-var _check_plugin_version_scene = preload("updater/check_plugin_version.tscn")
-var _update_plugin_scene = preload("updater/update_plugin.tscn")
-var added_menu_item : bool = false
-var popup_menu : PopupMenu
+var _check_plugin_version_scene:PackedScene = preload("updater/check_plugin_version.tscn")
+var _update_plugin_scene:PackedScene = preload("updater/update_plugin.tscn")
+var added_menu_item:bool = false
+var popup_menu:PopupMenu
 
 static func get_plugin_repos() -> Dictionary:
 	return ProjectSettings.get_setting(PROJECT_SETTINGS_PATH, {})
@@ -30,20 +29,6 @@ static func remove_plugin(plugin_directory:String):
 
 func get_plugin_path() -> String:
 	return get_script().resource_path.get_base_dir()
-
-func _on_visibility_changed_to_hidden(dialog_window : Window) -> void:
-	if dialog_window and dialog_window.is_inside_tree() and not dialog_window.visible:
-		dialog_window.queue_free()
-
-func _delayed_call_with_path(callable : Callable, target_path : String) -> void:
-	var timer: Timer = Timer.new()
-	var timer_callable := func():
-		timer.stop()
-		callable.call(target_path)
-		timer.queue_free()
-	timer.timeout.connect(timer_callable)
-	add_child(timer)
-	timer.start(WINDOW_OPEN_DELAY)
 
 func _on_new_version_detected(new_plugin_version:String, check_version_instance:CheckPluginVersion) -> void:
 	_add_update_plugin_tool_option(check_version_instance.get_plugin_name(), new_plugin_version, check_version_instance.plugin_directory, check_version_instance.plugin_repo_url)
@@ -101,7 +86,7 @@ func _remove_tool_options() -> void:
 	_remove_update_plugin_tool_option()
 
 func _enter_tree() -> void:
-	add_plugin(get_plugin_path(), "https://github.com/Maaack/Godot-Plugin-Updater")
+	add_plugin(get_plugin_path(), PROJECT_REPO_URL)
 	_add_tool_options()
 
 func _exit_tree() -> void:

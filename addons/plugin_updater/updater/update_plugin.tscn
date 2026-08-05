@@ -40,10 +40,10 @@ layout_mode = 2
 [node name="UpdateLabel" type="Label" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=1695426949]
 unique_name_in_owner = true
 layout_mode = 2
-text = "This will update the contents of plugin_updater.
+text = "This will update the contents of res://addons/plugin_updater/.
 Files outside of there will not be affected.
 
-Update to v0.0.0?"
+Update Plugin Updater to v0.0.0?"
 
 [node name="HSeparator" type="HSeparator" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=20078693]
 layout_mode = 2
@@ -71,10 +71,6 @@ grow_vertical = 2
 size_flags_vertical = 3
 focus_mode = 2
 bbcode_enabled = true
-text = "[b][font_size=48]What's Changed[/font_size][/b]
-* Continue setup window by @Maaack in [url=https://github.com/Maaack/Godot-Game-Template/pull/501]https://github.com/Maaack/Godot-Game-Template/pull/501[/url]* Fix UID warnings by @Maaack in [url=https://github.com/Maaack/Godot-Game-Template/pull/502]https://github.com/Maaack/Godot-Game-Template/pull/502[/url]* Update mini options menu by @Maaack in [url=https://github.com/Maaack/Godot-Game-Template/pull/503]https://github.com/Maaack/Godot-Game-Template/pull/503[/url]* Avoid crash with input prompts installer by @Maaack in [url=https://github.com/Maaack/Godot-Game-Template/pull/504]https://github.com/Maaack/Godot-Game-Template/pull/504[/url]* Updates plugin version to 1.5.1 by @Maaack in [url=https://github.com/Maaack/Godot-Game-Template/pull/505]https://github.com/Maaack/Godot-Game-Template/pull/505[/url]
-
-[b]Full Changelog[/b]: [url=https://github.com/Maaack/Godot-Game-Template/compare/v1.5.0...v1.5.1]https://github.com/Maaack/Godot-Game-Template/compare/v1.5.0...v1.5.1[/url]"
 selection_enabled = true
 script = ExtResource("4_1amwf")
 h1_font_size = 64
