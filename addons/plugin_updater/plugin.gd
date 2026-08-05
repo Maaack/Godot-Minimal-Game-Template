@@ -13,6 +13,7 @@ static var instance:PluginUpdater
 var _check_plugin_version_scene:PackedScene = preload("updater/check_plugin_version.tscn")
 var _update_plugin_scene:PackedScene = preload("updater/update_plugin.tscn")
 var added_menu_item:bool = false
+var submenu_id_map:Dictionary[String, int]
 var popup_menu:PopupMenu
 
 static func get_plugin_repos() -> Dictionary:
@@ -59,7 +60,7 @@ func open_update_plugin(plugin_directory:String, plugin_repo_url:String) -> void
 	var update_plugin_instance:UpdatePlugin = _update_plugin_scene.instantiate()
 	add_child.call_deferred(update_plugin_instance)
 	await update_plugin_instance.ready
-	update_plugin_instance.update_completed.connect(_remove_update_plugin_tool_option)
+	update_plugin_instance.update_completed.connect(_remove_update_plugin_submenu_option.bind(plugin_directory))
 	update_plugin_instance.plugin_directory = plugin_directory
 	update_plugin_instance.plugin_repo_url = plugin_repo_url
 	update_plugin_instance.get_latest_release()
@@ -74,12 +75,23 @@ func _on_id_pressed(_id : int, plugin_directory:String, plugin_repo_url:String):
 
 func _add_update_plugin_tool_option(plugin_name:String, new_version:String, plugin_directory:String, plugin_repo_url:String) -> void:
 	var _popup_menu := get_popup_menu()
-	_popup_menu.add_item("%s to %s" % [plugin_name, new_version])
+	var _submenu_item_id = submenu_id_map.size()
+	_popup_menu.add_item("%s to %s" % [plugin_name, new_version], _submenu_item_id)
+	submenu_id_map[plugin_directory] = _submenu_item_id
 	if not _popup_menu.id_pressed.is_connected(_on_id_pressed):
 		_popup_menu.id_pressed.connect(_on_id_pressed.bind(plugin_directory, plugin_repo_url))
 	if not added_menu_item:
 		add_tool_submenu_item("Update Plugins...", _popup_menu)
 		added_menu_item = true
+
+func _remove_update_plugin_submenu_option(plugin_directory:String) -> void:
+	if not plugin_directory in submenu_id_map:
+		return
+	var submenu_id = submenu_id_map[plugin_directory]
+	var _popup_menu := get_popup_menu()
+	var _index := _popup_menu.get_item_index(submenu_id)
+	_popup_menu.remove_item(_index)
+	submenu_id_map.erase(plugin_directory)
 
 func _remove_update_plugin_tool_option() -> void:
 	if not added_menu_item:
