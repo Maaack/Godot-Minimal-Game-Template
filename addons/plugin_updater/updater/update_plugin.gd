@@ -14,7 +14,7 @@ const RELEASES_URL_MAP := {
 	GITHUB_REGEX : GITHUB_RELEASES_URL
 }
 const UPDATE_CONFIRMATION_MESSAGE := "This will update the contents of %s.\nFiles outside of there will not be affected.\n\nUpdate %s to %s?"
-const PLUGIN_TEMP_ZIP_PATH := "%s_%s_update.zip"
+const PLUGIN_TEMP_ZIP_PATH := "res://addons/%s_%s_update.zip"
 
 ## The directory of the plugin to update. Typically in res://addons/.
 @export var plugin_directory : String
@@ -96,7 +96,7 @@ func _on_api_client_response_received(response_body : Variant) -> void:
 	if latest_release.has("zipball_url"):
 		_zipball_url = latest_release["zipball_url"]
 	_download_and_extract_node.zip_url = _zipball_url
-	_download_and_extract_node.zip_file_path = PLUGIN_TEMP_ZIP_PATH % [plugin_directory, _newest_version]
+	_download_and_extract_node.zip_file_path = PLUGIN_TEMP_ZIP_PATH % [_plugin_name.to_pascal_case(), _newest_version]
 	_update_label.text = UPDATE_CONFIRMATION_MESSAGE % [plugin_directory, _plugin_name, _newest_version]
 	if latest_release.has("body"):
 		_release_notes_label.from_release_notes(latest_release["body"])
