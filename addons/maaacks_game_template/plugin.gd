@@ -336,8 +336,10 @@ func _enter_tree() -> void:
 	_add_translations()
 	_show_plugin_dialogues()
 	_resave_if_recently_opened()
+	PluginUpdater.add_plugin(get_plugin_path(), "https://github.com/Maaack/Godot-Minimal-Game-Template")
 	instance = self
 
 func _exit_tree() -> void:
 	_remove_tool_options()
+	PluginUpdater.remove_plugin(get_plugin_path())
 	instance = null
