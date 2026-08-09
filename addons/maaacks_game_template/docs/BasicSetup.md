@@ -37,7 +37,7 @@ To change the _Main Menu_:
 
 1.  Open `opening.tscn`.
 2.  Select the `Opening` root node.
-3.  Update `Next Scene Path` to the desired path (`main_menu_with_animations.tscn` by default).  
+3.  Update `Next Scene Path` to the desired path (`main_menu.tscn` by default).  
 4.  Save the scene.
 
 Other scenes that need updating:
