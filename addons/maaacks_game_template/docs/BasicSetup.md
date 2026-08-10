@@ -37,7 +37,7 @@ To change the _Main Menu_:
 
 1.  Open `opening.tscn`.
 2.  Select the `Opening` root node.
-3.  Update `Next Scene Path` to the desired path (`main_menu_with_animations.tscn` by default).  
+3.  Update `Next Scene Path` to the desired path (`main_menu.tscn` by default).  
 4.  Save the scene.
 
 Other scenes that need updating:
@@ -47,7 +47,7 @@ Other scenes that need updating:
 
 To change the _Game Scene_:
 
-1.  Open `main_menu_with_animations.tscn`.
+1.  Open `main_menu.tscn`.
 2.  Select the `MainMenu` root node.
 3.  Update `Game Scene Path` to the path of the project's game scene (`game.tscn` by default).  
 4.  Save the scene.

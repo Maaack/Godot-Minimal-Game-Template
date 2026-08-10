@@ -1,11 +1,11 @@
 # Godot Minimal Game Template
-For Godot 4.7 (4.3+ compatible)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Maaack/Godot-Minimal-Game-Template) ![GitHub Release Date](https://img.shields.io/github/release-date/Maaack/Godot-Minimal-Game-Template)
+[![Discord members](https://img.shields.io/discord/772191827570720798.svg?label=&logo=discord&logoColor=ffffff)](https://discord.gg/AyZrJh5AMp)  
 
-> [!NOTE]  
-> Using the latest version of Godot is recommended.   
-> See [Main Menu Setup](/addons/maaacks_game_template/docs/MainMenuSetup.md) for use with versions < 4.6.  
 
 This template has a main menu, options menus, pause menu, credits, extra tools, and an example game scene.  
+
+For Godot 4.7 (4.3+ compatible)
 
 [Example on itch.io](https://maaack.itch.io/godot-minimal-game-template)  
 
@@ -20,8 +20,6 @@ This template has a main menu, options menus, pause menu, credits, extra tools, 
 ![Main Menu](/addons/maaacks_game_template/media/screenshot-6-main-menu-5.png)  
 ![Key Rebinding](/addons/maaacks_game_template/media/screenshot-6-input-list-8.png)  
 ![Audio Controls](/addons/maaacks_game_template/media/screenshot-6-audio-options-2.png)  
-![Video Controls](/addons/maaacks_game_template/media/screenshot-6-video-options-5.png)  
-![Pause Menu](/addons/maaacks_game_template/media/screenshot-6-pause-menu-3.png)  
 [More Screenshots](/addons/maaacks_game_template/docs/Screenshots.md)  
 
 ## Objective
@@ -161,7 +159,7 @@ As part of setup, example scenes are copied out of `/addons/` into a desired fol
 
 ## Community
 
-Join the [Discord server](https://discord.gg/AyZrJh5AMp ) and share your work with others. It's also a space for getting or giving feedback, and asking for help. 
+Join the [Discord server](https://discord.gg/AyZrJh5AMp) and share your work with others. It's also a space for getting or giving feedback, and asking for help. 
  
 
 ## Links
