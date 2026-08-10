@@ -1,4 +1,4 @@
-# Godot Game Template
+# Godot Minimal Game Template
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/Maaack/Godot-Minimal-Game-Template) ![GitHub Release Date](https://img.shields.io/github/release-date/Maaack/Godot-Minimal-Game-Template)
 [![Discord members](https://img.shields.io/discord/772191827570720798.svg?label=&logo=discord&logoColor=ffffff)](https://discord.gg/AyZrJh5AMp)  
 
