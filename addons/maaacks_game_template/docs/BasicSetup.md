@@ -47,7 +47,7 @@ Other scenes that need updating:
 
 To change the _Game Scene_:
 
-1.  Open `main_menu_with_animations.tscn`.
+1.  Open `main_menu.tscn`.
 2.  Select the `MainMenu` root node.
 3.  Update `Game Scene Path` to the path of the project's game scene (`game.tscn` by default).  
 4.  Save the scene.
