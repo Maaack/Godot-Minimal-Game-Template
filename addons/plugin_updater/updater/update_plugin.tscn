@@ -1,27 +1,27 @@
-[gd_scene format=3 uid="uid://d28bi7wdv8hbp"]
+[gd_scene format=3 uid="uid://dq5d0bxm86cie"]
 
-[ext_resource type="Script" uid="uid://txkhnw0u8jy4" path="res://addons/maaacks_game_template/installer/update_plugin.gd" id="1_s6qpc"]
-[ext_resource type="PackedScene" uid="uid://cf0hkngq1mgfy" path="res://addons/maaacks_game_template/utilities/api_client.tscn" id="2_s6pdq"]
-[ext_resource type="PackedScene" uid="uid://5hhnbgqjwnic" path="res://addons/maaacks_game_template/utilities/download_and_extract.tscn" id="3_s6pdq"]
-[ext_resource type="Script" uid="uid://cgv1xnmh7vr66" path="res://addons/maaacks_game_template/installer/release_notes_label.gd" id="4_1amwf"]
+[ext_resource type="Script" uid="uid://3gffrn4v6hju" path="res://addons/plugin_updater/updater/update_plugin.gd" id="1_s6qpc"]
+[ext_resource type="PackedScene" uid="uid://cejsq41gjq8vk" path="res://addons/plugin_updater/utilities/api_client.tscn" id="2_s6pdq"]
+[ext_resource type="PackedScene" uid="uid://cvs1njvxbu308" path="res://addons/plugin_updater/utilities/download_and_extract.tscn" id="3_s6pdq"]
+[ext_resource type="Script" uid="uid://bsy5732fxiqh8" path="res://addons/plugin_updater/updater/release_notes_label.gd" id="4_1amwf"]
 
 [node name="UpdatePlugin" type="Node" unique_id=192125767]
 script = ExtResource("1_s6qpc")
-plugin_directory = "maaacks_game_template"
-plugin_github_url = "https://github.com/Maaack/Godot-Minimal-Game-Template"
+plugin_directory = "res://addons/plugin_updater/"
+plugin_repo_url = "https://github.com/Maaack/Godot-Plugin-Updater"
 
 [node name="APIClient" parent="." unique_id=897421534 instance=ExtResource("2_s6pdq")]
-api_url = "https://api.github.com/repos/Maaack/Godot-Minimal-Game-Template/releases"
+api_url = "https://api.github.com/repos/Maaack/Godot-Plugin-Updater/releases"
 request_method = 0
 
 [node name="DownloadAndExtract" parent="." unique_id=692551309 instance=ExtResource("3_s6pdq")]
-extract_path = "res://"
 path_match_string = "addons/"
 skip_base_zip_dir = true
 force = true
 
 [node name="UpdateConfirmationDialog" type="ConfirmationDialog" parent="." unique_id=607805234]
 auto_translate_mode = 1
+oversampling_override = 1.0
 title = "Update Plugin?"
 initial_position = 2
 size = Vector2i(640, 360)
@@ -40,30 +40,13 @@ layout_mode = 2
 [node name="UpdateLabel" type="Label" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=1695426949]
 unique_name_in_owner = true
 layout_mode = 2
-text = "This will update the contents of the plugin folder (addons/plugin_directory/).
-Files outside of the plugin folder will not be affected.
+text = "This will update the contents of res://addons/plugin_updater/.
+Files outside of there will not be affected.
 
-Update to v0.0.0?"
+Update Plugin Updater to v0.0.0?"
 
 [node name="HSeparator" type="HSeparator" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=20078693]
 layout_mode = 2
-
-[node name="WarningMessageButton" type="LinkButton" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=231955413]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Warning About Updating"
-
-[node name="WarningMessageLabel" type="Label" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=588458496]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(624, 205)
-layout_mode = 2
-text = "Not all updates are backwards compatible!
-
-Updating can cause issues with previously copied examples. It is recommended to delete any copied example files before starting an update, if it is an option. Otherwise, pay attention to the Release Notes for an idea for how changes may impact your project.
-
-Lastly, save your work and proceed with caution."
-autowrap_mode = 3
 
 [node name="ReleaseNotesButton" type="LinkButton" parent="UpdateConfirmationDialog/MarginContainer/VBoxContainer" unique_id=1256239963]
 unique_name_in_owner = true
@@ -103,6 +86,7 @@ auto_translate_mode = 1
 title = "Installing..."
 initial_position = 2
 size = Vector2i(400, 111)
+exclusive = false
 
 [node name="MarginContainer" type="MarginContainer" parent="InstallingDialog" unique_id=516640038]
 offset_left = 4.0
@@ -141,7 +125,7 @@ auto_translate_mode = 1
 title = "Update Complete"
 initial_position = 2
 size = Vector2i(400, 128)
-dialog_text = "%s updated to v%s."
+dialog_text = "%s updated to %s."
 
 [connection signal="request_failed" from="APIClient" to="." method="_on_api_client_request_failed"]
 [connection signal="response_received" from="APIClient" to="." method="_on_api_client_response_received"]
@@ -150,7 +134,6 @@ dialog_text = "%s updated to v%s."
 [connection signal="zip_saved" from="DownloadAndExtract" to="." method="_on_download_and_extract_zip_saved"]
 [connection signal="canceled" from="UpdateConfirmationDialog" to="." method="_on_update_confirmation_dialog_canceled"]
 [connection signal="confirmed" from="UpdateConfirmationDialog" to="." method="_on_update_confirmation_dialog_confirmed"]
-[connection signal="pressed" from="UpdateConfirmationDialog/MarginContainer/VBoxContainer/WarningMessageButton" to="." method="_on_warning_message_button_pressed"]
 [connection signal="pressed" from="UpdateConfirmationDialog/MarginContainer/VBoxContainer/ReleaseNotesButton" to="." method="_on_release_notes_button_pressed"]
 [connection signal="canceled" from="ErrorDialog" to="." method="_on_error_dialog_canceled"]
 [connection signal="confirmed" from="ErrorDialog" to="." method="_on_error_dialog_confirmed"]
