@@ -14,11 +14,6 @@ script = ExtResource("1_fcjph")
 
 [node name="StartUp" parent="." unique_id=1177605314 instance=ExtResource("2_5i5om")]
 
-[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1317385298]
-process_mode = 3
-autoplay = true
-bus = &"Music"
-
 [node name="ImagesContainer" type="MarginContainer" parent="." unique_id=969970400]
 unique_name_in_owner = true
 layout_mode = 1
