@@ -39,9 +39,8 @@ func _enable_update_plugin_tool_option(tag_name : String) -> void:
 	update_button.disabled = false
 
 func _open_check_plugin_version() -> void:
-	if ProjectSettings.get_setting(MaaacksGameTemplatePlugin.get_settings_path() + "disable_update_check", false):
-		update_label.text = "Check for Latest Version"
-		update_button.disabled = false
+	if PluginUpdater.instance == null:
+		update_label.text = "Plugin Updater Disabled"
 		return
 	var check_version_instance := PluginUpdater.instance.get_check_plugin_version(MaaacksGameTemplatePlugin.get_plugin_path(), MaaacksGameTemplatePlugin.PLUGIN_REPO_URL)
 	add_child(check_version_instance)
@@ -53,7 +52,7 @@ func _open_check_plugin_version() -> void:
 
 func _refresh_copy_and_delete_examples() -> void:
 	var examples_path = MaaacksGameTemplatePlugin.instance.get_plugin_examples_path()
-	if MaaacksGameTemplatePlugin.get_copy_path() != examples_path:
+	if MaaacksGameTemplatePlugin.instance.get_copy_path() != examples_path:
 		copy_check_box.button_pressed = true
 	var dir := DirAccess.open("res://")
 	if dir.dir_exists(examples_path):
@@ -98,7 +97,7 @@ func _on_update_button_pressed():
 		_open_check_plugin_version()
 		return
 	else:
-		tree_exited.connect(func(): PluginUpdater.instance.open_update_plugin(MaaacksGameTemplatePlugin.get_plugin_path(), MaaacksGameTemplatePlugin.PLUGIN_REPO_URL))
+		tree_exited.connect(func(): PluginUpdater.instance.open_update_plugin(MaaacksGameTemplatePlugin.instance.get_plugin_path(), MaaacksGameTemplatePlugin.PLUGIN_REPO_URL))
 		queue_free()
 
 func _on_copy_button_pressed():
@@ -110,11 +109,11 @@ func _on_delete_button_pressed():
 	queue_free()
 
 func _on_set_main_scene_button_pressed():
-	tree_exited.connect(func(): MaaacksGameTemplatePlugin.instance.open_main_scene_confirmation_dialog(MaaacksGameTemplatePlugin.get_copy_path()))
+	tree_exited.connect(func(): MaaacksGameTemplatePlugin.instance.open_main_scene_confirmation_dialog(MaaacksGameTemplatePlugin.instance.get_copy_path()))
 	queue_free()
 
 func _on_set_default_theme_button_pressed():
-	tree_exited.connect(func(): MaaacksGameTemplatePlugin.instance.open_theme_selection_dialog(MaaacksGameTemplatePlugin.get_copy_path()))
+	tree_exited.connect(func(): MaaacksGameTemplatePlugin.instance.open_theme_selection_dialog(MaaacksGameTemplatePlugin.instance.get_copy_path()))
 	queue_free()
 
 func _on_add_input_icons_button_pressed():
