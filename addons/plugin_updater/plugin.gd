@@ -24,14 +24,19 @@ static func add_plugin(plugin_directory:String, plugin_repo_url:String):
 	var plugin_repos := get_plugin_repos()
 	plugin_repos[plugin_directory] = plugin_repo_url
 	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH, plugin_repos)
+	ProjectSettings.save()
 
 static func remove_plugin(plugin_directory:String):
 	var plugin_repos := get_plugin_repos()
 	plugin_repos.erase(plugin_directory)
 	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH, plugin_repos)
+	ProjectSettings.save()
+
+static func get_enabled_plugins() -> PackedStringArray:
+	return ProjectSettings.get_setting("editor_plugins/enabled", [] as PackedStringArray)
 
 func get_plugin_path() -> String:
-	return get_script().resource_path.get_base_dir()
+	return get_script().resource_path.get_base_dir() + "/"
 
 func _on_new_version_detected(new_plugin_version:String, check_version_instance:CheckPluginVersion) -> void:
 	_add_update_plugin_tool_option(check_version_instance.get_plugin_name(), new_plugin_version, check_version_instance.plugin_directory, check_version_instance.plugin_repo_url)
