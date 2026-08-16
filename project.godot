@@ -106,7 +106,7 @@ common/enable_pause_aware_picking=true
 
 plugins={
 "res://addons/maaacks_game_template/": "https://github.com/Maaack/Godot-Minimal-Game-Template",
-"res://addons/plugin_updater": "https://github.com/Maaack/Godot-Plugin-Updater"
+"res://addons/plugin_updater/": "https://github.com/Maaack/Godot-Plugin-Updater"
 }
 
 [rendering]

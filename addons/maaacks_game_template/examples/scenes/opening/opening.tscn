@@ -7,7 +7,7 @@
 next_scene_path = "res://addons/maaacks_game_template/examples/scenes/menus/main_menu/main_menu.tscn"
 images = Array[Texture2D]([ExtResource("2_5ncfi")])
 
-[node name="ImagesContainer" parent="." index="0" unique_id=969970400]
+[node name="ImagesContainer" parent="." index="2" unique_id=969970400]
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64

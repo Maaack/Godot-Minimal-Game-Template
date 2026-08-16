@@ -8,6 +8,7 @@ signal game_started
 signal game_exited
 
 ## Defines the path to the game scene. Hides the play button if empty.
+## Will use ProjectSettings paths if left empty.
 @export_file("*.tscn") var game_scene_path : String
 ## The scene to open when a player clicks the 'Options' button.
 @export var options_packed_scene : PackedScene
@@ -34,7 +35,7 @@ var sub_menu : Control
 @onready var scene_loader_node = get_tree().root.get_node_or_null(^"SceneLoader")
 
 func get_game_scene_path() -> String:
-	return game_scene_path
+	return MaaacksGameTemplatePlugin.get_game_path(game_scene_path)
 
 func load_game_scene() -> void:
 	if scene_loader_node:
