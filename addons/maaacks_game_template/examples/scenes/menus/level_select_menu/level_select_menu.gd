@@ -1,9 +1,8 @@
 extends Control
 
 ## Loads a simple ItemList node within a margin container. SceneLister updates
-## the available scenes in the directory provided. Activating a level will update
-## the GameStateExample's current_level, and emit a signal. The main menu node will trigger
-## a load action from that signal.
+## the available scenes in the directory provided. Activating a level will emit a signal.
+## The main menu node will trigger a load action from that signal.
 
 signal level_selected
 
