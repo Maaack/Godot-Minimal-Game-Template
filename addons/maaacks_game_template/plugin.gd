@@ -297,16 +297,22 @@ func _add_tool_options() -> void:
 func _remove_tool_options() -> void:
 	remove_tool_menu_item("Run " + get_plugin_name() + " Setup...")
 
+func _add_to_auto_update_list() -> void:
+	PluginUpdater.add_plugin(get_plugin_path(), PLUGIN_REPO_URL)
+
+func _remove_from_auto_update_list() -> void:
+	PluginUpdater.remove_plugin(get_plugin_path())
+
 func _enter_tree() -> void:
 	_install_audio_busses()
 	_add_tool_options()
 	_add_translations()
 	_show_plugin_dialogues()
+	_add_to_auto_update_list()
 	_resave_if_recently_opened()
-	PluginUpdater.add_plugin(get_plugin_path(), PLUGIN_REPO_URL)
 	instance = self
 
 func _exit_tree() -> void:
 	_remove_tool_options()
-	PluginUpdater.remove_plugin(get_plugin_path())
+	_remove_from_auto_update_list()
 	instance = null
