@@ -40,7 +40,7 @@ To change the _Main Menu_, _Game Scene_, or _Ending Scene_:
 2.  Set **Advanced Settings** to enabled.
 3.  Navigate to the *Maaacks Game Template* settings.
 4.  Update `Main Menu Scene Path` to the main menu scene (`main_menu.tscn` by default).  
-5.  Update `Game Scene Path` to the game scene.  
+5.  Update `Game Scene Path` to the game scene (`game.tscn` by default).  
 6.  Update `Ending Scene Path` to the ending scene (`end_credits.tscn` by default).  
 7.  Close the window.
     
