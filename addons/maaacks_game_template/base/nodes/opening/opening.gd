@@ -2,6 +2,7 @@ extends Control
 ## Scene for displaying opening logos, placards, or other images before a game.
 
 ## Defines the path to the next scene.
+## Will use ProjectSettings paths if left empty.
 @export_file("*.tscn") var next_scene_path : String
 ## The list of images to show in the opening sequence.
 @export var images : Array[Texture2D]
@@ -28,7 +29,7 @@ var tween : Tween
 var next_image_index : int = 0
 
 func get_next_scene_path() -> String:
-	return next_scene_path
+	return MaaacksGameTemplatePlugin.get_main_menu_path(next_scene_path)
 
 func _on_scene_loaded() -> void:
 	scene_loader_node.change_scene_to_resource()
@@ -119,7 +120,6 @@ func _show_next_image(animated : bool = true) -> void:
 	_wait_and_fade_out(texture_rect)
 
 func _ready() -> void:
-	AppSettings.set_from_config_and_window(get_window())
 	if scene_loader_node:
 		scene_loader_node.load_scene(get_next_scene_path(), true)
 	_add_textures_to_container(images)

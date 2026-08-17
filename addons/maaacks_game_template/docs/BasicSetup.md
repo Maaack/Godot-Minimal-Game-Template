@@ -17,6 +17,7 @@ Open the _Setup Wizard_ by navigating to `Project > Tools > Run Maaack's Minimal
 A typical full installation will have the following steps completed:  
 -  Using Latest Version
 -  Copy Example Files
+-  Update Project Paths
 -  Delete Example Files
 -  Set Main Scene
 
@@ -33,33 +34,16 @@ The flow of scenes in the template is (by default):
 Opening -> Main Menu -> Game Scene -> Ending Scene
 ```   
 
-To change the _Main Menu_:
+To change the _Main Menu_, _Game Scene_, or _Ending Scene_:
 
-1.  Open `opening.tscn`.
-2.  Select the `Opening` root node.
-3.  Update `Next Scene Path` to the desired path (`main_menu.tscn` by default).  
-4.  Save the scene.
-
-Other scenes that need updating:
-- `pause_menu_layer.tscn`
-- `game.tscn` (`level_manager.gd`)  
-- `end_credits.tscn`  
-
-To change the _Game Scene_:
-
-1.  Open `main_menu.tscn`.
-2.  Select the `MainMenu` root node.
-3.  Update `Game Scene Path` to the path of the project's game scene (`game.tscn` by default).  
-4.  Save the scene.
-
-To change the _Ending Scene_:
-
-1.  Open `game.tscn`.
-2.  Select the `LevelManager` node.
-3.  Expand the `Scenes` Option Group in the Inspector.
-4.  Update the optional `Ending Scene Path` to the desired scene (`end_credits.tscn` by default).  
-5.  Save the scene.
-
+1.  Open the **Project > Project Settings > General** tab.
+2.  Set **Advanced Settings** to enabled.
+3.  Navigate to the *Maaacks Game Template* settings.
+4.  Update `Main Menu Scene Path` to the main menu scene (`main_menu.tscn` by default).  
+5.  Update `Game Scene Path` to the game scene (`game.tscn` by default).  
+6.  Update `Ending Scene Path` to the ending scene (`end_credits.tscn` by default).  
+7.  Close the window.
+    
 To change the _Opening_:
 
 1.  Navigate to `Project > Project Settings…`

@@ -6,7 +6,6 @@
 
 [node name="EndCredits" unique_id=241213605 instance=ExtResource("1_h82up")]
 script = ExtResource("2_0sycx")
-main_menu_scene_path = "res://scenes/menus/main_menu/main_menu.tscn"
 force_mouse_mode_visible = false
 
 [node name="BackgroundColor" type="ColorRect" parent="." index="0" unique_id=1680337145]

@@ -1,8 +1,10 @@
 extends Node
 
 ## Path to a main menu scene.
+## Will use ProjectSettings paths if left empty.
 @export_file("*.tscn") var main_menu_scene_path : String
 ## Optional path to an ending scene.
+## Will use ProjectSettings paths if left empty.
 @export_file("*.tscn") var ending_scene_path : String
 ## Optional screen to be shown after the game is won.
 @export var game_won_scene : PackedScene
@@ -20,7 +22,7 @@ func _try_connecting_signal_to_node(node : Node, signal_name : String, callable 
 		node.connect(signal_name, callable)
 
 func get_main_menu_scene_path() -> String:
-	return main_menu_scene_path
+	return MaaacksGameTemplatePlugin.get_main_menu_path(main_menu_scene_path)
 
 func _load_main_menu() -> void:
 	if scene_loader_node:
@@ -29,7 +31,7 @@ func _load_main_menu() -> void:
 		get_tree().change_scene_to_file(get_main_menu_scene_path())
 
 func get_ending_scene_path() -> String:
-	return ending_scene_path
+	return MaaacksGameTemplatePlugin.get_ending_scene_path(ending_scene_path)
 
 func _load_ending() -> void:
 	if not get_ending_scene_path().is_empty():

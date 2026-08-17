@@ -8,13 +8,23 @@ const PLUGIN_REPO_URL = "https://github.com/Maaack/Godot-Minimal-Game-Template"
 const EXAMPLES_RELATIVE_PATH = "examples/"
 const MAIN_SCENE_RELATIVE_PATH = "scenes/opening/opening.tscn"
 const OVERRIDE_RELATIVE_PATH = "installer/override.cfg"
+const MAIN_MENU_RELATIVE_PATH = "scenes/menus/main_menu/main_menu.tscn"
+const GAME_SCENE_RELATIVE_PATH = "scenes/game/game.tscn"
+const ENDING_SCENE_RELATIVE_PATH = "scenes/end_credits/end_credits.tscn"
 const THEMES_DIRECTORY_RELATIVE_PATH = "resources/themes"
 const WINDOW_OPEN_DELAY : float = 0.5
 const RUNNING_CHECK_DELAY : float = 0.25
 const OPEN_EDITOR_DELAY : float = 0.1
 const MAX_PHYSICS_FRAMES_FROM_START : int = 60
 const AVAILABLE_TRANSLATIONS : Array = ["en", "fr"]
-
+const MAIN_MENU_SCENE_PATH_KEY = "main_menu_scene_path"
+const GAME_SCENE_PATH_KEY = "game_scene_path"
+const ENDING_SCENE_PATH_KEY = "ending_scene_path"
+const SCENE_PATHS : Dictionary[String, String] = {
+	MAIN_MENU_SCENE_PATH_KEY : MAIN_MENU_RELATIVE_PATH,
+	GAME_SCENE_PATH_KEY : GAME_SCENE_RELATIVE_PATH,
+	ENDING_SCENE_PATH_KEY : ENDING_SCENE_RELATIVE_PATH,
+}
 const CopyAndEdit = preload("installer/copy_and_edit_files.gd")
 
 static var instance : MaaacksGameTemplatePlugin
@@ -26,6 +36,21 @@ static func get_plugin_name() -> String:
 
 static func get_settings_path() -> String:
 	return PROJECT_SETTINGS_PATH
+
+static func get_main_menu_path(override_path : String = "") -> String:
+	if (not override_path.is_empty()) and FileAccess.file_exists(override_path):
+		return override_path
+	return ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + MAIN_MENU_SCENE_PATH_KEY, override_path)
+
+static func get_game_path(override_path : String = "") -> String:
+	if (not override_path.is_empty()) and FileAccess.file_exists(override_path):
+		return override_path
+	return ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + GAME_SCENE_PATH_KEY, override_path)
+
+static func get_ending_scene_path(override_path : String = "") -> String:
+	if (not override_path.is_empty()) and FileAccess.file_exists(override_path):
+		return override_path
+	return ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + ENDING_SCENE_PATH_KEY, override_path)
 
 func get_plugin_path() -> String:
 	return get_script().resource_path.get_base_dir() + "/"
@@ -185,6 +210,22 @@ func _copy_override_file() -> void:
 	var override_path : String = get_plugin_path() + OVERRIDE_RELATIVE_PATH
 	_raw_copy_file_path(override_path, "res://"+override_path.get_file())
 
+func _set_project_paths(target_path : String, overwrite : bool = true) -> void:
+	for key in SCENE_PATHS:
+		if (not overwrite) and ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + key) != null:
+			continue
+		var relative_path = SCENE_PATHS[key]
+		var full_path = ""
+		if not relative_path.is_empty():
+			full_path = target_path + relative_path
+		ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + key, full_path)
+
+func _set_default_project_paths() -> void:
+	_set_project_paths(get_plugin_examples_path(), false)
+
+func update_project_paths(target_path : String) -> void:
+	_set_project_paths(target_path)
+
 func _add_translations() -> void:
 	var dir := DirAccess.open("res://")
 	var translations : PackedStringArray = ProjectSettings.get_setting("internationalization/locale/translations", [])
@@ -194,9 +235,25 @@ func _add_translations() -> void:
 			translations.append(translation_path)
 	ProjectSettings.set_setting("internationalization/locale/translations", translations)
 
+func _are_all_project_paths_updated(target_path) -> bool:
+	for key in SCENE_PATHS:
+		var value : String = ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + key, "")
+		if value.is_empty() and SCENE_PATHS[key].is_empty():
+			continue
+		if not value == target_path + SCENE_PATHS[key]:
+			return false
+	return true
+
+func are_project_paths_updated() -> bool:
+	var copy_path := get_copy_path()
+	if copy_path == get_plugin_examples_path():
+		return false
+	return _are_all_project_paths_updated(copy_path)
+
 func _on_completed_copy_to_directory(target_path : String) -> void:
 	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "copy_path", target_path)
 	ProjectSettings.save()
+	update_project_paths(target_path)
 	_copy_override_file()
 	_open_play_opening_confirmation_dialog(target_path)
 
@@ -210,6 +267,8 @@ func is_partially_installed() -> bool:
 		# Installation not started
 		return false
 	if not are_examples_deleted():
+		return true
+	if not are_project_paths_updated():
 		return true
 	return false
 
@@ -300,6 +359,9 @@ func _add_to_auto_update_list() -> void:
 
 func _remove_from_auto_update_list() -> void:
 	PluginUpdater.remove_plugin(get_plugin_path())
+
+func _enable_plugin():
+	_set_default_project_paths()
 
 func _enter_tree() -> void:
 	_install_audio_busses()

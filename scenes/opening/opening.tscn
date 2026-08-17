@@ -4,10 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://ceuj5rs60106y" path="res://assets/godot_engine_logo/logo_vertical_color_dark.png" id="2_yhkvs"]
 
 [node name="Opening" unique_id=1235254564 instance=ExtResource("1_ke3tw")]
-next_scene_path = "res://scenes/menus/main_menu/main_menu.tscn"
 images = Array[Texture2D]([ExtResource("2_yhkvs")])
 
-[node name="ImagesContainer" parent="." index="0" unique_id=969970400]
+[node name="ImagesContainer" parent="." index="2" unique_id=969970400]
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64
