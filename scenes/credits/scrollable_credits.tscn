@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dalp26h275cyj"]
 
-[ext_resource type="Script" uid="uid://cmmx684llxhp6" path="res://scenes/credits/scrollable_credits.gd" id="1_jnbjt"]
-[ext_resource type="PackedScene" uid="uid://b1og6sd8hyu63" path="res://scenes/credits/credits_label.tscn" id="2_35kdw"]
+[ext_resource type="Script" path="res://scenes/credits/scrollable_credits.gd" id="1_jnbjt"]
+[ext_resource type="PackedScene" path="res://scenes/credits/credits_label.tscn" id="2_35kdw"]
 
 [node name="ScrollableCredits" type="Control" unique_id=1582148595]
 layout_mode = 3
