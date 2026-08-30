@@ -2,55 +2,20 @@
 class_name MaaacksGameTemplatePlugin
 extends EditorPlugin
 
-const PLUGIN_NAME = "Maaack's Minimal Game Template"
-const PROJECT_SETTINGS_PATH = "maaacks_game_template/"
 const PLUGIN_REPO_URL = "https://github.com/Maaack/Godot-Minimal-Game-Template"
 const EXAMPLES_RELATIVE_PATH = "examples/"
-const MAIN_SCENE_RELATIVE_PATH = "scenes/opening/opening.tscn"
 const OVERRIDE_RELATIVE_PATH = "installer/override.cfg"
-const MAIN_MENU_RELATIVE_PATH = "scenes/menus/main_menu/main_menu.tscn"
-const GAME_SCENE_RELATIVE_PATH = "scenes/game/game.tscn"
-const ENDING_SCENE_RELATIVE_PATH = "scenes/end_credits/end_credits.tscn"
 const THEMES_DIRECTORY_RELATIVE_PATH = "resources/themes"
 const WINDOW_OPEN_DELAY : float = 0.5
 const RUNNING_CHECK_DELAY : float = 0.25
 const OPEN_EDITOR_DELAY : float = 0.1
 const MAX_PHYSICS_FRAMES_FROM_START : int = 60
 const AVAILABLE_TRANSLATIONS : Array = ["en", "fr"]
-const MAIN_MENU_SCENE_PATH_KEY = "main_menu_scene_path"
-const GAME_SCENE_PATH_KEY = "game_scene_path"
-const ENDING_SCENE_PATH_KEY = "ending_scene_path"
-const SCENE_PATHS : Dictionary[String, String] = {
-	MAIN_MENU_SCENE_PATH_KEY : MAIN_MENU_RELATIVE_PATH,
-	GAME_SCENE_PATH_KEY : GAME_SCENE_RELATIVE_PATH,
-	ENDING_SCENE_PATH_KEY : ENDING_SCENE_RELATIVE_PATH,
-}
 const CopyAndEdit = preload("installer/copy_and_edit_files.gd")
 
 static var instance : MaaacksGameTemplatePlugin
 
 var selected_theme : String
-
-static func get_plugin_name() -> String:
-	return PLUGIN_NAME
-
-static func get_settings_path() -> String:
-	return PROJECT_SETTINGS_PATH
-
-static func get_main_menu_path(override_path : String = "") -> String:
-	if (not override_path.is_empty()) and FileAccess.file_exists(override_path):
-		return override_path
-	return ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + MAIN_MENU_SCENE_PATH_KEY, override_path)
-
-static func get_game_path(override_path : String = "") -> String:
-	if (not override_path.is_empty()) and FileAccess.file_exists(override_path):
-		return override_path
-	return ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + GAME_SCENE_PATH_KEY, override_path)
-
-static func get_ending_scene_path(override_path : String = "") -> String:
-	if (not override_path.is_empty()) and FileAccess.file_exists(override_path):
-		return override_path
-	return ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + ENDING_SCENE_PATH_KEY, override_path)
 
 func get_plugin_path() -> String:
 	return get_script().resource_path.get_base_dir() + "/"
@@ -59,10 +24,7 @@ func get_plugin_examples_path() -> String:
 	return get_plugin_path() + EXAMPLES_RELATIVE_PATH
 
 func get_copy_path() -> String:
-	var copy_path = ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "copy_path", get_plugin_examples_path())
-	if not copy_path.ends_with("/"):
-		copy_path += "/"
-	return copy_path
+	return MaaacksGameTemplate.get_copy_path(get_plugin_examples_path())
 
 func _on_theme_selected(theme_resource_path: String) -> void:
 	selected_theme = theme_resource_path
@@ -114,7 +76,7 @@ func _update_main_scene(target_path : String, main_scene_path : String) -> void:
 
 func is_main_scene_set(target_path : String = get_copy_path()) -> bool:
 	var current_main_scene_path = ProjectSettings.get_setting("application/run/main_scene", "")
-	var new_main_scene_path = target_path + MAIN_SCENE_RELATIVE_PATH
+	var new_main_scene_path = target_path + MaaacksGameTemplate.get_main_scene_relative_path()
 	return current_main_scene_path == new_main_scene_path
 
 func _check_main_scene_needs_updating(target_path : String) -> void:
@@ -126,7 +88,7 @@ func _check_main_scene_needs_updating(target_path : String) -> void:
 func open_main_scene_confirmation_dialog(target_path : String) -> void:
 	var main_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/main_scene_confirmation_dialog.tscn")
 	var main_confirmation_instance : ConfirmationDialog = main_confirmation_scene.instantiate()
-	var new_main_scene_path = target_path + MAIN_SCENE_RELATIVE_PATH
+	var new_main_scene_path = target_path + MaaacksGameTemplate.get_main_scene_relative_path()
 	if main_confirmation_instance.has_method(&"set_main_scene_text"):
 		main_confirmation_instance.set_main_scene_text(new_main_scene_path)
 	main_confirmation_instance.confirmed.connect(_update_main_scene.bind(target_path, new_main_scene_path))
@@ -151,14 +113,16 @@ func _open_delete_examples_confirmation_dialog(target_path : String) -> void:
 	add_child(delete_confirmation_instance)
 
 func open_delete_examples_short_confirmation_dialog() -> void:
+	var copy_path := get_copy_path()
 	var delete_confirmation_scene : PackedScene = load(get_plugin_path() + "installer/delete_examples_short_confirmation_dialog.tscn")
 	var delete_confirmation_instance : ConfirmationDialog = delete_confirmation_scene.instantiate()
-	delete_confirmation_instance.confirmed.connect(_delete_source_examples_directory)
+	delete_confirmation_instance.confirmed.connect(_delete_source_examples_directory.bind(copy_path))
+	delete_confirmation_instance.canceled.connect(_delayed_call_with_path.bind(open_setup_wizard, copy_path))
 	delete_confirmation_instance.visibility_changed.connect(_on_visibility_changed_to_hidden.bind(delete_confirmation_instance))
 	add_child(delete_confirmation_instance)
 
 func _run_opening_scene(target_path : String) -> void:
-	var opening_scene_path = target_path + MAIN_SCENE_RELATIVE_PATH
+	var opening_scene_path = target_path + MaaacksGameTemplate.get_main_scene_relative_path()
 	EditorInterface.play_custom_scene(opening_scene_path)
 	var timer: Timer = Timer.new()
 	var callable := func() -> void:
@@ -210,21 +174,11 @@ func _copy_override_file() -> void:
 	var override_path : String = get_plugin_path() + OVERRIDE_RELATIVE_PATH
 	_raw_copy_file_path(override_path, "res://"+override_path.get_file())
 
-func _set_project_paths(target_path : String, overwrite : bool = true) -> void:
-	for key in SCENE_PATHS:
-		if (not overwrite) and ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + key) != null:
-			continue
-		var relative_path = SCENE_PATHS[key]
-		var full_path = ""
-		if not relative_path.is_empty():
-			full_path = target_path + relative_path
-		ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + key, full_path)
-
 func _set_default_project_paths() -> void:
-	_set_project_paths(get_plugin_examples_path(), false)
+	MaaacksGameTemplate.set_project_paths(get_plugin_examples_path(), false)
 
-func update_project_paths(target_path : String) -> void:
-	_set_project_paths(target_path)
+func update_project_paths() -> void:
+	MaaacksGameTemplate.set_project_paths(get_copy_path())
 
 func _add_translations() -> void:
 	var dir := DirAccess.open("res://")
@@ -235,25 +189,15 @@ func _add_translations() -> void:
 			translations.append(translation_path)
 	ProjectSettings.set_setting("internationalization/locale/translations", translations)
 
-func _are_all_project_paths_updated(target_path) -> bool:
-	for key in SCENE_PATHS:
-		var value : String = ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + key, "")
-		if value.is_empty() and SCENE_PATHS[key].is_empty():
-			continue
-		if not value == target_path + SCENE_PATHS[key]:
-			return false
-	return true
-
 func are_project_paths_updated() -> bool:
 	var copy_path := get_copy_path()
 	if copy_path == get_plugin_examples_path():
 		return false
-	return _are_all_project_paths_updated(copy_path)
+	return MaaacksGameTemplate.are_project_paths_updated(copy_path)
 
 func _on_completed_copy_to_directory(target_path : String) -> void:
-	ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "copy_path", target_path)
-	ProjectSettings.save()
-	update_project_paths(target_path)
+	MaaacksGameTemplate.set_copy_path(target_path)
+	MaaacksGameTemplate.set_project_paths(target_path)
 	_copy_override_file()
 	_open_play_opening_confirmation_dialog(target_path)
 
@@ -262,7 +206,7 @@ func are_examples_deleted() -> bool:
 	return not dir.dir_exists(get_plugin_examples_path())
 
 func is_partially_installed() -> bool:
-	var copy_path : String = ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "copy_path")
+	var copy_path : String = MaaacksGameTemplate.get_copy_path()
 	if copy_path.is_empty():
 		# Installation not started
 		return false
@@ -300,15 +244,16 @@ func _open_continue_setup_dialog() -> void:
 	confirmation_instance.visibility_changed.connect(_on_visibility_changed_to_hidden.bind(confirmation_instance))
 	add_child(confirmation_instance)
 
-func open_setup_wizard() -> void:
+func open_setup_wizard(_target_path: String = "") -> void:
 	var setup_wizard_scene : PackedScene = load(get_plugin_path() + "installer/setup_wizard.tscn")
 	var setup_wizard_instance : Node = setup_wizard_scene.instantiate()
 	add_child(setup_wizard_instance)
 
 func _show_plugin_dialogues() -> void:
-	if not ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "disable_install_wizard", false):
+	var setting_key := MaaacksGameTemplate.get_settings_path() + "disable_install_wizard"
+	if not ProjectSettings.get_setting(setting_key, false):
 		_open_confirmation_dialog()
-		ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_install_wizard", true)
+		ProjectSettings.set_setting(setting_key, true)
 		ProjectSettings.save()
 		return
 	if is_partially_installed():
@@ -342,17 +287,18 @@ func _add_audio_bus(bus_name : String) -> void:
 	ProjectSettings.save()
 
 func _install_audio_busses() -> void:
-	if not ProjectSettings.get_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses", false):
+	var setting_key := MaaacksGameTemplate.get_settings_path() + "disable_install_audio_busses"
+	if not ProjectSettings.get_setting(setting_key, false):
 		_add_audio_bus("Music")
 		_add_audio_bus("SFX")
-		ProjectSettings.set_setting(PROJECT_SETTINGS_PATH + "disable_install_audio_busses", true)
+		ProjectSettings.set_setting(setting_key, true)
 		ProjectSettings.save()
 
 func _add_tool_options() -> void:
-	add_tool_menu_item("Run " + get_plugin_name() + " Setup...", open_setup_wizard)
+	add_tool_menu_item("Run " + MaaacksGameTemplate.get_plugin_name() + " Setup...", open_setup_wizard)
 
 func _remove_tool_options() -> void:
-	remove_tool_menu_item("Run " + get_plugin_name() + " Setup...")
+	remove_tool_menu_item("Run " + MaaacksGameTemplate.get_plugin_name() + " Setup...")
 
 func _add_to_auto_update_list() -> void:
 	PluginUpdater.add_plugin(get_plugin_path(), PLUGIN_REPO_URL)
@@ -362,17 +308,19 @@ func _remove_from_auto_update_list() -> void:
 
 func _enable_plugin():
 	_set_default_project_paths()
+	_add_to_auto_update_list()
+
+func _disable_plugin():
+	_remove_from_auto_update_list()
 
 func _enter_tree() -> void:
 	_install_audio_busses()
 	_add_tool_options()
 	_add_translations()
 	_show_plugin_dialogues()
-	_add_to_auto_update_list()
 	_resave_if_recently_opened()
 	instance = self
 
 func _exit_tree() -> void:
 	_remove_tool_options()
-	_remove_from_auto_update_list()
 	instance = null
