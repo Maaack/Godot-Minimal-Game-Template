@@ -16,7 +16,7 @@ extends "res://addons/maaacks_game_template/examples/scenes/credits/scrolling_cr
 @onready var scene_loader_node = get_tree().root.get_node_or_null(^"SceneLoader")
 
 func get_main_menu_scene_path() -> String:
-	return MaaacksGameTemplatePlugin.get_main_menu_path(main_menu_scene_path)
+	return MaaacksGameTemplate.get_main_menu_path(main_menu_scene_path)
 
 func _end_reached() -> void:
 	end_message_panel.show()
