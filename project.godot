@@ -15,6 +15,11 @@ run/main_scene="res://scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.7")
 config/icon="res://icon.png"
 
+[clean_copy_examples]
+
+examples_paths=Array[String](["res://addons/maaacks_game_template/examples/"])
+copy_path="res://"
+
 [display]
 
 window/size/viewport_width=1280
@@ -96,7 +101,6 @@ locale/translations=PackedStringArray("res://addons/maaacks_game_template/base/t
 copy_path="res://"
 disable_update_check=false
 disable_install_wizard=true
-disable_install_audio_busses=true
 main_menu_scene_path="res://scenes/menus/main_menu/main_menu.tscn"
 game_scene_path="res://scenes/game/game.tscn"
 ending_scene_path="res://scenes/end_credits/end_credits.tscn"
