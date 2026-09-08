@@ -6,7 +6,13 @@
 
 [node name="EndCredits" unique_id=241213605 instance=ExtResource("1_885d8")]
 script = ExtResource("2_6pwj4")
+main_menu_scene_path = ""
 force_mouse_mode_visible = false
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." index="0" unique_id=1411252862]
+process_mode = 3
+autoplay = true
+bus = &"Music"
 
 [node name="BackgroundColor" type="ColorRect" parent="." index="0" unique_id=1680337145]
 layout_mode = 1
