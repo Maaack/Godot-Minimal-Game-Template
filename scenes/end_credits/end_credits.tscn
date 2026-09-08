@@ -6,9 +6,15 @@
 
 [node name="EndCredits" unique_id=241213605 instance=ExtResource("1_h82up")]
 script = ExtResource("2_0sycx")
+main_menu_scene_path = ""
 force_mouse_mode_visible = false
 
-[node name="BackgroundColor" type="ColorRect" parent="." index="0" unique_id=1680337145]
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." index="0" unique_id=1411252862]
+process_mode = 3
+autoplay = true
+bus = &"Music"
+
+[node name="BackgroundColor" type="ColorRect" parent="." index="1" unique_id=1680337145]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="BackgroundTextureRect" type="TextureRect" parent="." index="1" unique_id=1403514687]
+[node name="BackgroundTextureRect" type="TextureRect" parent="." index="2" unique_id=1403514687]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +33,7 @@ grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
 
-[node name="CenterContainer" type="CenterContainer" parent="." index="3" unique_id=1516904581]
+[node name="CenterContainer" type="CenterContainer" parent="." index="5" unique_id=1516904581]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -65,6 +71,7 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 script = ExtResource("3_2v40y")
+reverse_search = true
 
 [node name="ExitButton" type="Button" parent="CenterContainer/EndMessagePanel/VBoxContainer/CenterContainer/HBoxContainer" index="0" unique_id=1219625438]
 unique_name_in_owner = true
