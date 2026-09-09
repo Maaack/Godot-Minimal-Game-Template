@@ -46,8 +46,10 @@ Conflicts that are safe to ignore:
 6.  Click to **Install**.
 7.  Reload the project (you may see errors before you do this).
 8.  Enable the plugin(s) from the **Project > Project Settings > Plugins** tab.  
-    1.  Enable *Maaack's Minimal Game Template*.
-    2.  If it's enabled for the first time, the setup wizard will start.  
+    1.  Optionally, enable the following:
+        -  *Plugin Updater*
+    2.  Enable *Maaack's Minimal Game Template*.
+    3.  If it's enabled for the first time, the setup wizard will start.  
         Close the window behind it and complete the setup wizard.  
 9.  Continue with the [Basic Setup](/addons/maaacks_game_template/docs/BasicSetup.md).
 
