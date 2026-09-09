@@ -5,7 +5,7 @@
 ![GitHub Release Date](https://img.shields.io/github/release-date/Maaack/Godot-Minimal-Game-Template)
 [![Discord members](https://img.shields.io/discord/772191827570720798.svg?label=&logo=discord&logoColor=ffffff)](https://discord.gg/AyZrJh5AMp)  
 
-This template has a main menu, options menus, pause menu, credits, extra tools, and an example game scene. 
+This template has a main menu, options menus, pause menu, credits, extra tools, and an example game scene.  
 
 For *Godot 4.7* (4.4+ compatible)
 
@@ -41,12 +41,16 @@ While editing a project in *Godot*:
 4.  Click to **Download**.
 5.  Check that contents are getting installed to `addons/` and if there are any conflicts.  
 Conflicts that are safe to ignore:
-    1. `addons/plugin_updater/`
+    -  `addons/plugin_updater/`
+    -  `addons/clean_copy_examples/`
 6.  Click to **Install**.
 7.  Reload the project (you may see errors before you do this).
-8.  Enable the plugin from the **Project > Project Settings > Plugins** tab.  
-    1.  If it's enabled for the first time, the setup wizard will start.  
-    2.  Close the window behind it and complete the setup wizard.  
+8.  Enable the plugin(s) from the **Project > Project Settings > Plugins** tab.  
+    1.  Optionally, enable the following:
+        -  *Plugin Updater*
+    2.  Enable *Maaack's Minimal Game Template*.
+    3.  If it's enabled for the first time, the setup wizard will start.  
+        Close the window behind it and complete the setup wizard.  
 9.  Continue with the [Basic Setup](/addons/maaacks_game_template/docs/BasicSetup.md).
 
 ## Usage
