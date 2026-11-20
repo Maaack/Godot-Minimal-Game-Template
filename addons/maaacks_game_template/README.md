@@ -86,6 +86,7 @@ As part of setup, example scenes are copied out of `/addons/` into a desired fol
 [Options Menu Setup](/docs/OptionsMenuSetup.md)  
 [Game Scene Setup](/docs/GameSceneSetup.md)  
 [Updating Credits](/docs/UpdatingCredits.md)  
+[Input Remapping Menus](/docs/InputRemappingMenus.md)  
 [Input Icon Mapping](/docs/InputIconMapping.md)  
 [Joypad Inputs](/docs/JoypadInputs.md)  
 [How Parts Work](/docs/HowPartsWork.md)  
@@ -116,7 +117,6 @@ As part of setup, example scenes are copied out of `/addons/` into a desired fol
 | [Play on itch.io](https://maaack.itch.io/crumbling-castle) |  [Play on Steam](https://store.steampowered.com/app/3458180/Dungeon_Bodega_Simulator/)  | [Play on Steam](https://store.steampowered.com/app/4155880/Lucky_Break/)  |
 
 [All Shared Games](/docs/GamesMade.md)  
-
 
 ## Community
 
