@@ -41,7 +41,7 @@ The `examples/` folder contains an example project using inherited scenes from t
 
 ## Full
 
-Users that want a more complete set of features can try *[Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template)* or other options from the [plugin suite](/addons/maaacks_game_template/docs/PluginSuite.md).  
+Users that want a more complete set of features can try *[Maaack's Game Template](https://github.com/Maaack/Godot-Game-Template)* or other options from the [plugin suite](/docs/PluginSuite.md).  
 
 The full template includes:
 -   Loading Screen

@@ -4,12 +4,19 @@ When setting up a game scene, it is useful to refer to the `game/game.tscn` incl
 
 There are a few parts to setting up a basic game scene, as done in the `Game` example used in the template.
 
+## Selecting a Game Scene
+The game scene by default is `game.tscn`. The path to the game scene is set in the **Project Settings**. Open the **Project > Project Settings > General** tab, navigate to *Maaacks Game Template* settings, and edit the `Game Scene Path` to the desired scene.
+
+Alternatively, the path to the game scene can be set directly in the following scenes:
+
+- `main_menu.tscn` or `main_menu_with_animations.tscn`  
+
 ## Pausing
 The `PauseMenuController` node can be added to the tree, or the `pause_menu_controller.gd` script may be attached to an empty `Node`. Selecting the node should then allow for setting the `pause_menu_packed` value in the inspector. Set it to the `pause_menu_layer.tscn` (or `pause_menu.tscn`) scene and save.
 
 This should be enough to capture when the `ui-cancel` input action is pressed in-game. On keyboards, this is commonly the `Esc` key.
 
-![Escape key aasigned to ui_cancel](/addons/maaacks_game_template/media/documentation/ui_cancel-action-inputs.png)
+![Escape key aasigned to ui_cancel](/media/documentation/ui_cancel-action-inputs.png)
 
 ## Level Loading
 Some level loading scripts are provided with the examples. They load levels in order from a list, or dynamically by file paths. 
@@ -74,7 +81,7 @@ It has some disadvantages, as well.
 
 If a higher resolution is desired for the menus and UI than the game, then the project viewport size should be set to a multiple of the desired game window size. Then set the stretch shrink in `SubViewportContainer` to the multiple of the resolution. For example, if the game is at `640x360`, then the project viewport size can be set to `1280x720`, and the stretch shrink set to `2` (`1280x720 / 2 = 640x360`). Finally, set the texture filter on the `SubViewportContainer` to `Nearest`.
 
-![Game Resolution vs. Screen Resolution](/addons/maaacks_game_template/media/documentation/game-resolution-vs-screen-resolution.png)
+![Game Resolution vs. Screen Resolution](/media/documentation/game-resolution-vs-screen-resolution.png)
 
 #### Mouse Interaction
 If trying to detect `mouse_enter` and `mouse_exit` events on areas inside the game world, enable physics object picking on the `SubViewport`.
