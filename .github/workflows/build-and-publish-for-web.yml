@@ -28,9 +28,9 @@
 name: "Build and Publish for Web"
 
 on:
-  release:
+  push:
     branches:
-      - 'main'
+      - 'demo-version'
   workflow_dispatch:
 
 env:
@@ -51,10 +51,10 @@ jobs:
     container:
       image: barichello/godot-ci:${{ vars.GODOT_VERSION }}
     steps:
-      - name: Checkout Main Branch
+      - name: Checkout Demo Version
         uses: actions/checkout@v4
         with:
-          ref: 'main'
+          ref: 'demo-version'
           lfs: true
 
       - name: Setup
