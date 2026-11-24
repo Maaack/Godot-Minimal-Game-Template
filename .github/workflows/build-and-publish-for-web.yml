@@ -51,10 +51,10 @@ jobs:
     container:
       image: barichello/godot-ci:${{ vars.GODOT_VERSION }}
     steps:
-      - name: Checkout Demo Version
+      - name: Checkout Main Branch
         uses: actions/checkout@v4
         with:
-          ref: 'demo-version'
+          ref: 'main'
           lfs: true
 
       - name: Setup
