@@ -1,0 +1,92 @@
+# MIT License
+
+# Copyright (c) 2018 BARICHELLO
+
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
+# Original file: https://github.com/abarichello/godot-ci/blob/master/.github/workflows/godot-ci.yml
+# This edited version is triggered using a Github Release and uploads artifacts to the release.
+# Furthermore, a new job (upload to itch.io using butler) has been added.
+# Modified by: Nicolas Oulianov (github @oulianov) & Marek Belski
+
+name: "Build and Publish for Web"
+
+on:
+  release:
+    branches:
+      - 'main'
+  workflow_dispatch:
+
+env:
+  # Set this repository variable to the version to build with (>=4)
+  # This will be used for all container images: barichello/godot-ci:[#.#]
+  # Look at available versions here: https://hub.docker.com/r/barichello/godot-ci/tags
+  GODOT_VERSION: ${{ vars.GODOT_VERSION }}
+  # Set this repository variable to your game name (it will be the filename downloaded)
+  EXPORT_NAME: ${{ vars.EXPORT_NAME }}
+  # NOTE: If your `project.godot` is at the repository root, set `PROJECT_PATH` to "."
+  # If it's in a subdirectory, set it to the subdirectory name (e.g., "your-game")
+  PROJECT_PATH: .
+
+jobs:
+  export-web:
+    name: Web Export
+    runs-on: ubuntu-24.04
+    container:
+      image: barichello/godot-ci:${{ vars.GODOT_VERSION }}
+    steps:
+      - name: Checkout Demo Version
+        uses: actions/checkout@v4
+        with:
+          ref: 'demo-version'
+          lfs: true
+
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/export_templates/
+          mkdir -v -p ~/.config/
+          mv -v /root/.config/godot ~/.config/godot || true
+          mv -v /root/.local/share/godot/export_templates/${GODOT_VERSION}.stable ~/.local/share/godot/export_templates/${GODOT_VERSION}.stable || true
+
+      - name: Web Build
+        run: |
+          mkdir -v -p build/web
+          EXPORT_DIR="$(readlink -f build)"
+          cd $PROJECT_PATH
+          godot --headless --verbose --export-release "Web" "$EXPORT_DIR/web/index.html"
+
+      - name: Install Butler
+        run: |
+          curl -L -o butler.zip https://broth.itch.zone/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip
+          chmod +x butler
+          ./butler -V
+
+      - name: Get latest release tag
+        id: latest
+        run: |
+          tag=$(curl -s \
+            -H "authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/releases/latest \
+            | jq -r .tag_name)
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+
+      - name: Upload to Itch.io - Web
+        run: |
+          ./butler push builds/web ${{ env.ITCH_USERNAME }}/${{ env.ITCH_GAME }}:html5 --userversion "${{ steps.latest.outputs.tag }}"
